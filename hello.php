@@ -1,6 +1,4 @@
-﻿
-;;;;;;;;;;;
-<?
+﻿<?
 echo 'hello';
 printf('hello');
 ?>
