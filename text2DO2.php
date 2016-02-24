@@ -14,17 +14,14 @@
 		$t = oformlenie($t);
 		$t = toDO($t);
 		$t = stripslashes($t);
-		//echo htmlspecialchars($t);
+		echo htmlspecialchars($t);
 
 
-			
+/*
 		$s = 'цкнгшщзхфвпрлджчсмтб'; // согласные буквы, кроме 'ьъ'
 		$a = 'ёйцукенгшщзхъфывапролджэячсмитьбюѣѵіѳ'; // весь алфавит
 
 
-
-
-/*
 		$t = str_replace('{{акут}}','́', $t);	$t = str_replace('{{акут3}}','ˊ', $t);
 		$t = preg_replace("/([цкнгшщзхфвпрлджчсмтб])([][ ,?!:;'\"()*<])/u", "$1ъ$2", $t);
 		$t = preg_replace("~([цкнгшщзхфвпрлджчсмтб])(\.) *$~u", "$1ъ$2", $t); // в конце текста
@@ -154,9 +151,9 @@
 		$t = preg_replace("/(г)нев/ui", "$1нѣв", $t);
 		$t = preg_replace("/(о)твет/ui", "$1твѣт", $t);		
 
-		*/
 
 		echo (htmlspecialchars($t));
+		*/
 	} 
 ?></pre>
 	<br><br>
