@@ -10,10 +10,10 @@ $txt = file_get_contents($f);
 $txt = preg_replace_callback('~(<section begin="([^"]*(?:[а-яёѣѵіѳА-ЯЁѢѴІѲ-](?: \d)?|[^а-яёѣѵіѳА-ЯЁѢѴІѲ-]\d))" */ *>\s*)(.*?)(\s*<section end="\2" */ *>)~usi',
 		function ($s) {
 			$t = $s[3];
-			$t = addslashes($t);
+			//$t = addslashes($t);
 			$t = oformlenie($t);
 			$t = toDO($t);
-			$t = stripslashes($t);
+			//$t = stripslashes($t);
 			//echo htmlspecialchars($t);
 			return $s[1].$t.$s[4];},
 		$txt);
