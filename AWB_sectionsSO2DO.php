@@ -3,32 +3,21 @@
 
 require 'tsd-vars.php';
 
+$f ='AWBfile.txt';
+$txt = file_get_contents($f);
+//$txt = "<section begin=\"Армада\" />'''Арма{{акут}}да, ''армадилъ''''' <small>ипр.</small>, см. ''{{tsdl|армія}}''.{{tsdbr}}{{tsdbr}}<section end=\"Армада\" />";
 
-$txt = "<section begin=\"Армада\" />'''Арма{{акут}}да, ''армадилъ''''' <small>ипр.</small>, см. ''{{tsdl|армія}}''.{{tsdbr}}{{tsdbr}}<section end=\"Армада\" />";
-
-
-
-
-// <section begin="([^"]*[^\d])" */ *>
 $txt = preg_replace_callback('~(<section begin="([^"]*(?:[а-яёѣѵіѳА-ЯЁѢѴІѲ-](?: \d)?|[^а-яёѣѵіѳА-ЯЁѢѴІѲ-]\d))" */ *>\s*)(.*?)(\s*<section end="\2" */ *>)~usi',
 		function ($s) {
 			$t = $s[3];
-			//$t = addslashes($t);
+			$t = addslashes($t);
 			$t = oformlenie($t);
 			$t = toDO($t);
-			//$t = stripslashes($t);
+			$t = stripslashes($t);
 			//echo htmlspecialchars($t);
 			return $s[1].$t.$s[4];},
 		$txt);
 
+file_put_contents($f, $txt);
 
-printf ($txt);
 
-
-function replace($t)
-{
-	//$t = $t[0].'iiii';
-	$t = 'iiii';
-  return $t;
-
-}
