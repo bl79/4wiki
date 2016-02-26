@@ -1,16 +1,20 @@
-﻿<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Конвертер современной орфографии в дореформенную</title></head><body>
+﻿<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Конвертер современной орфографии в дореформенную</title>
+</head>
+<body>
 <pre style="white-space:pre-wrap;"><?php
-	if (isset($_POST["text"])) {
+	if (isset($_POST["text"])) { 
 		$t = $_POST["text"];
-
-		require 'tsd-vars.php';
-		//require 'toDO.php';
-		$t = addslashes($t);
-		$t = oformlenie($t);
+		
+		require 'toDO.php';
+		//$t = addslashes($t);
+		//$t = oformlenie($t);	
 		$t = $page2DO->convert($t);
-		$t = stripslashes($t);
 		echo htmlspecialchars($t);
-	}
+		//$t = stripslashes($t);
+	} 
 ?></pre>
 	<br><br>
 	<form method="post" action="<?=$_SERVER['PHP_SELF']?>">Конвертер современной орфографии в дореформенную.<br><br>
