@@ -1,7 +1,6 @@
 <?php
 require 'my.php';
 require 'vendor/autoload.php';
-require 'toDO.php';
 
 $tom	= 1;
 switch ($tom) {

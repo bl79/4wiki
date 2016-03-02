@@ -5,17 +5,18 @@
 </head>
 <body>
 <pre style="white-space:pre-wrap;"><?php
-	if (isset($_POST["text"])) { 
+	if (isset($_POST["text"])) {
 		$t = $_POST["text"];
-		
+
+		//$t="Конвертер современной орфографии в дореформенную";
+
 		//$t = addslashes($t);
 		//$t = oformlenie($t);
-		require 'toDOold.php';	$t = convert($t);
-		//require 'toDO.php';	$t = $page2DO->convert($t);
-		//require 'toDOnoclass.php';	$t = convert($t);
+		//require 'toDOold.php';	$t = convert($t);	// v 1
+		require 'toDO.php';	$t = $page2DO->convert($t);	// v 1.1 - оформленно как класс, пословная обработка (игнорируются служебные слова: тэги, шаблоны)		
 		//$t = stripslashes($t);
 		echo htmlspecialchars($t);
-	} 
+	}
 ?></pre>
 	<br><br>
 	<form method="post" action="<?=$_SERVER['PHP_SELF']?>">Конвертер современной орфографии в дореформенную.<br><br>

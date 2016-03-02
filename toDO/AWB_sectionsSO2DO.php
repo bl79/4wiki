@@ -1,6 +1,7 @@
 ﻿<?php
 // Скрипт для AWB, запускает функцию конвертации СО в ДО. Могут возникать ошибк если ошибочно не закрыты тэги секций.
-require 'tsd-vars.php';
+require '.\tsd-vars.php';
+require 'toDO.php';
 
 $f ='AWBfile.txt';
 $txt = file_get_contents($f);
