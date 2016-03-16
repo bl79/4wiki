@@ -40,7 +40,8 @@ function oformlenie($t) {
 	$t = str_replace('||', '{{!}}{{!}}', $t);
 	$t = str_replace('́','{{акут}}', $t);	$t = str_replace('ˊ','{{акут3}}', $t);
 	$t = str_replace('{{акут}}{{акут}}','{{акут}}', $t);	$t = str_replace('{{акут3}}{{акут3}}','{{акут3}}', $t);
-	// обработано $t = preg_replace("~(?<![][{}<:.|/-])(\b[a-z]+[a-z ]+[a-z]+\b)(?![\}</])~ui", "{{lang|la|$1}}", $t); // {{lang}}
+	// обработано
+	$t = preg_replace("~(?<![][{}<:.|/-])(\b[a-z]+[a-z ]+[a-z]+\b)(?![\}</])~ui", "{{lang|la|$1}}", $t); // {{lang}}
 		$t = preg_replace("~\b([A-Z]\. +)(\{\{lang\|la\|)~u", "$2$1", $t); // {{lang}}
 
 	// оптимизация '' ''
