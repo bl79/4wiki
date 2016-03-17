@@ -49,11 +49,10 @@
 
 	<form method="post" action="<?=$_SERVER['PHP_SELF']?>"><h2>Наиболее посещаемые страницы</h2>
 		<p>Top-1000, за период от авг. 2015 до пред. месяца или дня.</p>
-		<input type="text" name="site" value="ru.wikisource.org" placeholder="вики-сайт">
+		Сайт: <input type="text" name="site" value="ru.wikisource.org">
 		За месяц: <input type="text" id="datepickerPerMonth" name="datePerMonth"  placeholder="гггг/мм/all-days">
 		или за день: <input type="text" id="datepicker" name="date" placeholder="гггг/мм/дд">
 		<!-- <label><input type="checkbox" id="PerMonth" name="PerMonth" checked>PerMonth</label> -->
-		<label><input type="checkbox" name="namefilter" checked>Отфильтровка служ. викистраниц</label>
 		<input type=submit value="Отправить">
 	</form>
 
@@ -77,13 +76,8 @@ if (!empty($_POST["site"]) and !empty($_POST["date"])) {
 	// таблица
 	echo '<table><tr bgcolor="silver"><td>Позиция</td><td>Заголовок</td><td>Просмотров</td></tr>';
 	foreach ($json->items[0]->articles as $n) {
-		$name = str_replace("_"," ",$n->article);
-		if (!empty($_POST["namefilter"]) and (
-				preg_match("/(((Служебная|Викитека|Обсуждение Викитеки|Файл|Обсуждение файла|Участник|Обсуждение участника|Категория|Обсуждение категории|Справка|Обсуждение справки|Шаблон|Обсуждение шаблона|Раздѣлъ):)|Заглавная[ _]страница)/ui", $name)
-				or $name == '-'
-			)) continue;
-		$link = '<a href="https://'.$site.'/wiki/'.$name.'" >'.$name.'</a>';
-		echo "<tr><td>$n->rank</td><td>$link</td><td>$n->views</td></tr>";
+		$article = '<a href="https://'.$site.'/wiki/'.$n->article.'" >'. str_replace("_"," ",$n->article) .'</a>';
+		echo "<tr><td>$n->rank</td><td>$article</td><td>$n->views</td></tr>";
 	}
 	echo '</table>';
 }
