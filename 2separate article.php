@@ -1,12 +1,13 @@
 ﻿<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /></head>
  <?php
-$in='w-out2.txt';
-$out = "articles.csv";
+ require 'my.php';
+ $in='w-out2.txt';
+ $out = "articles.csv";
 
-$fp = fopen($in, 'rt');  // Текстовый режим
-//$t = fgetcsv ($fp);
+ $fp = fopen($in, 'rt');  // Текстовый режим
+ //$t = fgetcsv ($fp);
 
-while (($t = fgetcsv ($fp)) !== FALSE) {
+ while (($t = fgetcsv ($fp)) !== FALSE) {
 	//showarray($t);
 	//echo $t[1];
 	//

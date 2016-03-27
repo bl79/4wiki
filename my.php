@@ -10,11 +10,11 @@ function mb_ucfirst ($word) {
 
 
 // запись файла csv
-function fsave_csv($fout, $text, $fields_separator=null) {
+function fsave_csv($fout, $text, $delimiter=',') {
 	$fp = fopen($fout,'w'); if ($fp) {
 	//fputcsv($fp, $titles);
 	foreach ($text as $line) { 
-		fputcsv($fp, $line); //explode($fields_separator, $line)); 
+		fputcsv($fp, $line, $delimiter); //explode($fields_separator, $line));
 	}
 	fclose($fp);}
 }
