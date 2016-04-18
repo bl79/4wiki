@@ -1,0 +1,14 @@
+{
+    "name": "TSD",
+    "description": "словарь Даля в викитеке",
+    "authors": [
+        {
+            "name": "Vlad",
+            "email": "blagopoluchie12@gmail.com"
+        }
+    ],
+    "require": {
+        "ilya/belt": "~2",
+        "addwiki/wikibase-api": "dev-master"
+    }
+}
