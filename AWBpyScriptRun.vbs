@@ -1,6 +1,10 @@
 set WshShell = WScript.CreateObject("WScript.Shell")
 set WshArguments=WScript.Arguments
+<<<<<<< HEAD
 WshShell.CurrentDirectory = "d:\home\scripts.my\"
+=======
+WshShell.CurrentDirectory = "d:\home\scripts.my\4wiki\"
+>>>>>>> 234a35d... up
 REM command = "c:\Python35\python.exe ParserTempates_SlovariYandex.py"
 command = "c:\Python35\python.exe ParserTempates_SlovariYandex.py"
 if WshArguments.count()=0 then
