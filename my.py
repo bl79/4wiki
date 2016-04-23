@@ -26,8 +26,17 @@ def renameParam(tpl, name, newname):
 def renameTemlate(tpl, newname):
 	tpl.name = newname
 
-def findAndDeleteLink(tpl, link2remove, linkparameters):
-	linkparameters = ('ссылка', 'url') + linkparameters
+def findLink(tpl, link2remove, linkparameters = ('',)):
+	linkparameters = ('ссылка', 'url', 'часть', 'ссылка часть', 'часть ссылка') + linkparameters
+	# print (linkparameters)
+	for p in linkparameters:
+		if not tpl.has(p): continue
+		s = str(tpl.get(p).value)
+		if re.search(link2remove, s):
+			return True
+	
+def findAndDeleteLink(tpl, link2remove, linkparameters = ('',)):
+	linkparameters = ('ссылка', 'url', 'ссылка часть', 'часть ссылка') + linkparameters
 	# print (linkparameters)
 	for p in linkparameters:
 		if not tpl.has(p): continue
@@ -70,7 +79,7 @@ def paramIsEmpty (tpl, parameter):
 	if re.match('^\s*$', str(tpl.get(parameter).value)):  return True
 	
 def paramValueFromLinkOrPagename(tpl, parameter, link, s, addParam=False):
-	links = ('ссылка', 'url', link)	
+	links = ('ссылка', 'url', 'ссылка часть', link)	
 	print(link)
 	for link in links:
 		if tpl.has(link):
@@ -85,5 +94,16 @@ def paramValueFromLinkOrPagename(tpl, parameter, link, s, addParam=False):
 		if addParam:	
 			tpl.add(parameter, n)
 		else: 	tpl.get(parameter).value = n
-	print(n)
-	print(link)
+	# print(n)
+	# print(link)
+	
+def separateLinkFromPartParameter(tpl):
+	part = 'часть'
+	link = 'ссылка часть'
+	regexp = r'\[(http[^]\s]+)\s+(.+?)\]'
+	if tpl.has(part):	
+		s = str(tpl.get(part).value)
+		n = re.findall(regexp, s)
+		if n:
+			tpl.add(link, n[0][0])
+			tpl.get(part).value = n[0][1]
