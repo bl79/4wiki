@@ -17,10 +17,20 @@ link2remove = r'https?://(?:www\.|m\.)?slovari\.yandex\.ru/[^|\s]*(БСЭ/|%D0%9
 link2removeSY = r'https?://(?:www\.|m\.)?slovari\.yandex\.ru'
 renameTemplateToBSE = 'БСЭ3'
 renameTemplateToIzBSE = 'Из БСЭ'
-pagenameFromLink = r'/(?:БСЭ/|%D0%91%D0%A1%D0%AD/|article.xml\?book=bse&title=|dict/bse/[/a-z]*\d+/\d+\.htm\?text=)([^]/}&]+)/?'
+pagenameFromLink = r'/(?:БСЭ/|%D0%91%D0%A1%D0%AD/|article.xml\?book=bse&title=|dict/bse/[/a-z]*\d+/\d+\.htm\?text=)([^]/}&<]+)/?'
 
-code = mwparserfromhell.parse(text)
+
 # print(code)
+
+# plainlink = r'(>)\s*https?://(?:www\.|m\.)?slovari\.yandex\.ru/[^|\s]*(БСЭ/|%D0%91%D0%A1%D0%AD/|dict/bse/|=bse)[^<\s]+\s*(<)'
+# pagenameFromParameter(pagenameFromLink, link)
+# code = re.sub(plainlink, repl, code)
+# reLink = pagenameFromLink
+reLink = re.compile(link2removeSY + '/[^|\s]*' + pagenameFromLink)
+import urllib.request
+text = reLink.sub(lambda s: r'{{БСЭ3|статья=' + urllib.request.unquote(s.group(1)) + r'}}', text)
+code = mwparserfromhell.parse(text)
+
 for template in code.filter_templates():
 	# print(template)	
 	

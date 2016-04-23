@@ -77,8 +77,14 @@ def replaceParamValue(tpl, parameter, rePattern, repl):
 	
 def paramIsEmpty (tpl, parameter):
 	if re.match('^\s*$', str(tpl.get(parameter).value)):  return True
+
+def pagenameFromParameter(regexp, s):
+	n = re.findall(regexp, s)
+	if n:	
+		n = n[0]
+		if not re.match('^[\d\s]+$', n): return n
 	
-def paramValueFromLinkOrPagename(tpl, parameter, link, s, addParam=False):
+def paramValueFromLinkOrPagename(tpl, parameter, link, regexp, addParam=False):
 	links = ('ссылка', 'url', 'ссылка часть', link)	
 	print(link)
 	for link in links:
@@ -86,14 +92,16 @@ def paramValueFromLinkOrPagename(tpl, parameter, link, s, addParam=False):
 			import urllib.request
 			link = str(tpl.get(link).value)
 			link = urllib.request.unquote(link)
-			n = re.findall(s, link)
-	if n:	
-		n = n[0]
-		if re.match('^[\d\s]+$', n): return
-	# else:	n = sys.argv[1]
-		if addParam:	
-			tpl.add(parameter, n)
-		else: 	tpl.get(parameter).value = n
+			if not pagenameFromParameter(regexp, link): return
+			
+			# n = re.findall(regexp, link)
+	# if n:	
+		# n = n[0]
+		# if re.match('^[\d\s]+$', n): return
+	# # else:	n = sys.argv[1]
+			if addParam:	
+				tpl.add(parameter, n)
+			else: 	tpl.get(parameter).value = n
 	# print(n)
 	# print(link)
 	
