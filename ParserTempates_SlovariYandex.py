@@ -17,30 +17,37 @@ link2remove = r'https?://(?:www\.|m\.)?slovari\.yandex\.ru/[^|\s]*(БСЭ/|%D0%9
 link2removeSY = r'https?://(?:www\.|m\.)?slovari\.yandex\.ru'
 renameTemplateToBSE = 'БСЭ3'
 renameTemplateToIzBSE = 'Из БСЭ'
-pagenameFromLink = r'/(?:БСЭ/|%D0%91%D0%A1%D0%AD/|article.xml\?book=bse&title=|dict/bse/[/a-z]*\d+/\d+\.htm\?text=)([^]/}&<]+)/?'
+pagenameFromLink = r'/(?:БСЭ/|%D0%91%D0%A1%D0%AD/|article.xml\?book=bse&title=)([^]|/?&}\n]+)/?'
+# pagenameFromLink = r'/(?:БСЭ/|%D0%91%D0%A1%D0%AD/|article.xml\?book=bse&title=|dict/bse)(?:/[^]/}]*)?/([^]|/?&}\s\n]+)'
+# pagenameFromLink = r'/(?:БСЭ|%D0%91%D0%A1%D0%AD|dict/bse)(?:/[^]/}]*)?/(?:\d+/\d+\.htm\?text=)?([^]/}\s\n]+)'
+# pagenameFromLink = r'/(?:БСЭ|%D0%91%D0%A1%D0%AD|dict/bse)(?:/[^]/}]*)?/([^]|/?&}\s\n]+)'  (?:/[^]/}]*)?
 
-
-# print(code)
-
-# plainlink = r'(>)\s*https?://(?:www\.|m\.)?slovari\.yandex\.ru/[^|\s]*(БСЭ/|%D0%91%D0%A1%D0%AD/|dict/bse/|=bse)[^<\s]+\s*(<)'
-# pagenameFromParameter(pagenameFromLink, link)
-# code = re.sub(plainlink, repl, code)
-# reLink = pagenameFromLink
-reLink = re.compile(link2removeSY + '/[^|\s]*' + pagenameFromLink)
-import urllib.request
-text = reLink.sub(lambda s: r'{{БСЭ3|статья=' + urllib.request.unquote(s.group(1)) + r'}}', text)
 code = mwparserfromhell.parse(text)
 
+reSymbols = r'[.,;:"/—−-]'
+reEnd = reSymbols + '$'
+reBegin = '^' + reSymbols
+reV = r'(?:\bв\s+)?'
+reBSE = r'(?:БСЭ|[Бб]ольш(ая|ой) [Сс]оветск(ая|ой) [Ээ]нциклопеди[яи])?'
+reRemoveFromTitles = [
+	reV + reBSE,
+	'[Сс]татья' + reV,
+	reBegin,
+	reEnd,
+	]
+link2template (code, link2remove, renameTemplateToIzBSE, 'ссылка', 'заглавие', reRemoveFromTitles)
+
+# print(code)
 for template in code.filter_templates():
-	# print(template)	
-	
-	if template.name.matches(('статья', 'книга', 'публикация', 'cite web', 'cite news', 'из', 'Из БСЭ')):		
-		# print(template)		
-		if not findLink(template, link2remove): 
+	# print(template)
+
+	if template.name.matches(('статья', 'книга', 'публикация', 'cite web', 'cite news', 'из', 'Из БСЭ')):
+		# print(template)
+		if not findLink(template, link2remove):
 			separateLinkFromPartParameter(template)
 			findAndDeleteLink(template, link2removeSY)
-			continue		
-		
+			continue
+
 		if template.name.matches('Из') and template.get(1).value == 'БСЭ':
 			# # if template.has('заглавие'):
 			# if template.has(3):
@@ -66,30 +73,30 @@ for template in code.filter_templates():
 			# findAndDeleteLink(template, link2remove)
 			# deleteEmptyParam(template, ('автор', 'том', 'страницы', 'ссылка'))
 			# removeSpacesBreaks(template)
-			
-			
+
+
 
 			# r'/(?:БСЭ|%D0%91%D0%A1%D0%AD|dict/bse|article.xml\?book=bse)(?:/[^]/}\s]*)?(?:/\d+/\d+\.htm\?text=|&title=)?([^]/}]*)'
 			# /[^]/}\s]+/
 			deleteEmptyParam(template, (2, 3, 'title', 'заглавие'))
-			if template.has('title') or template.has('заглавие') or template.has(2):				
+			if template.has('title') or template.has('заглавие') or template.has(2):
 				renamedTitle = False
 				if template.has('title'):
 					renamedTitle = True
-					renameParam(template, 'title', 'заглавие')						
+					renameParam(template, 'title', 'заглавие')
 				if template.has(3) and not template.has('заглавие'):	# переименовать
 					template.get(3).name = 'заглавие'
 				if renamedTitle == True: # переименовать title как было, чтобы небыло вопросов, и не надо было отвечать
 					renameParam(template, 'заглавие', 'title')
-					renamedTitle = False								
+					renamedTitle = False
 			else:
-				paramValueFromLinkOrPagename(template, 'заглавие', 2, pagenameFromLink, True)	
-										
+				paramValueFromLinkOrPagename(template, 'заглавие', 2, pagenameFromLink, True)
+
 			if template.has(2) or template.has('ссылка') or template.has('url'):
 				findAndDeleteLink(template, link2remove, (2,))
 				deleteEmptyParam(template, (2, 'ссылка', 'url'))
-			
-			template.remove(1)	
+
+			template.remove(1)
 			template.name = renameTemplateToIzBSE
 			replaceParamValue(template, 'автор', '\s{2,}', ' ')
 			replaceParamValue(template, 'статья', '\s*— БСЭ — Яндекс.Словари', '')
@@ -104,9 +111,9 @@ for template in code.filter_templates():
 			deleteParamArhiveurlDateIfWebarchive(template)
 			removeSpacesBreaks(template)
 			continue
-			
+
 		elif template.name.matches('Из БСЭ'):
-			# # переделка 'Из БСЭ' → в БСЭ3			
+			# # переделка 'Из БСЭ' → в БСЭ3
 			# # if template.has(1):
 				# # template.add('ссылка', str(template.get(1).value))
 				# # template.remove(1)
@@ -124,55 +131,54 @@ for template in code.filter_templates():
 						# # template.remove(2)
 				# # else:
 					# # template.add('заглавие', sys.argv[1])
-			# # # print(template)	
+			# # # print(template)
 
-			# # просто чистка и парсинг url в 'Из БСЭ'
-			# pagenameFromLink = r'/(?:БСЭ|%D0%91%D0%A1%D0%AD|dict/bse)(?:/[^]/}]*)?/(?:\d+/\d+\.htm\?text=)?([^]/}]+)'
-			# deleteEmptyParam(template, (1, 2, 'title', 'заглавие'))
-			# if template.has('title') or template.has('заглавие') or template.has(2):				
-				# renamedTitle = False
-				# if template.has('title'):
-					# renamedTitle = True
-					# renameParam(template, 'title', 'заглавие')						
-				# if template.has(2) and not template.has('заглавие'):	# переименовать
-					# template.get(2).name = 'заглавие'
-				# if renamedTitle == True: # переименовать title как было, чтобы небыло вопросов, и не надо было отвечать
-					# renameParam(template, 'заглавие', 'title')
-					# renamedTitle = False								
-			# else:
-				# paramValueFromLinkOrPagename(template, 'заглавие', 1, pagenameFromLink, True)	
-										
-			# if template.has(1) or template.has('ссылка') or template.has('url'):
-				# findAndDeleteLink(template, link2remove, (1,))
-				# deleteEmptyParam(template, (1, 'ссылка', 'url'))
+			# просто чистка и парсинг url в 'Из БСЭ'
+			deleteEmptyParam(template, (1, 2, 'title', 'заглавие'))
+			if template.has('title') or template.has('заглавие') or template.has(2):
+				renamedTitle = False
+				if template.has('title'):
+					renamedTitle = True
+					renameParam(template, 'title', 'заглавие')
+				if template.has(2) and not template.has('заглавие'):	# переименовать
+					template.get(2).name = 'заглавие'
+				if renamedTitle == True: # переименовать title как было, чтобы небыло вопросов, и не надо было отвечать
+					renameParam(template, 'заглавие', 'title')
+					renamedTitle = False
+			else:
+				paramValueFromLinkOrPagename(template, 'заглавие', 1, pagenameFromLink, True)
+
+			if template.has(1) or template.has('ссылка') or template.has('url'):
+				findAndDeleteLink(template, link2remove, (1,))
+				deleteEmptyParam(template, (1, 'ссылка', 'url'))
 			continue
-				
-		elif template.name.matches(('статья', 'книга', 'публикация', 'cite web', 'cite news')):		
-			# print(template)			
+
+		elif template.name.matches(('статья', 'книга', 'публикация', 'cite web', 'cite news')):
+			# print(template)
 			# if not findAndDeleteLink(template, link2remove): continue
 			if template.name.matches('статья') or \
 					(template.name.matches('публикация') and template.has(1) and template.get(1).value == 'статья'):
 				findAndDeleteLink(template, link2remove)
-				# renameParam(template, 'заглавие', 'статья')	
+				# renameParam(template, 'заглавие', 'статья')
 				# removeTplParametersExceptThis(template, ('автор', 'статья', 'заглавие', 'том', 'страницы', 'ref', 				'archiveurl', 'archivedate'))
 				# print(template)
-				
-			elif template.name.matches(('книга', 'публикация')):				
+
+			elif template.name.matches(('книга', 'публикация')):
 				separateLinkFromPartParameter(template)
 				template.remove('заглавие')
 				if template.has('часть'):
-					paramValueFromLinkOrPagename(template, 'часть', '', pagenameFromLink, True)	
-					renameParam(template, 'часть', 'статья')				
+					paramValueFromLinkOrPagename(template, 'часть', '', pagenameFromLink, True)
+					renameParam(template, 'часть', 'статья')
 				findAndDeleteLink(template, link2remove)
 				# removeTplParametersExceptThis(template, ('автор', 'статья', 'заглавие', 'том', 'страницы', 'ref', 				'archiveurl', 'archivedate'))
 				print(template)
-				
+
 			elif template.name.matches(('cite web', 'cite news')):
 				renameParam(template, 'url', 'ссылка')
 				renameParam(template, 'author', 'автор')
 				renameParam(template, 'title', 'статья')
 				# removeTplParametersExceptThis(template, ('автор', 'статья', 'заглавие', 'том', 'страницы', 'ref', 				'archiveurl', 'archivedate'))
-			
+
 			template.name = renameTemplateToBSE
 			# removeTplParameters(template, ParametersToRemove)
 			replaceParamValue(template, 'автор', '\s{2,}', ' ')
@@ -188,8 +194,8 @@ for template in code.filter_templates():
 			deleteEmptyParam(template, ('автор', 'том', 'страницы', 'ссылка', 'ссылка часть', 'часть ссылка', 'издание', 'title', 'заглавие', 'ref', 'archiveurl', 'archivedate'))
 			deleteParamArhiveurlDateIfWebarchive(template)
 			removeSpacesBreaks(template)
-			# print(template)		
-		
+			# print(template)
+
 # print(str(code))
 # print(9)
 f = open(filename, 'w', encoding='utf-8')
