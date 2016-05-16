@@ -64,8 +64,10 @@ def link2template (code, regexpSearchLink, newTplName, TplUrlParameter, TplLinkt
 		if reRemoveFromTitles:
 			for r in reRemoveFromTitles:
 				link.title = re.sub(r, '', str(link.title))
-		if not re.match('^\s*$', str(link.title)):
-			tpl.add(TplLinktitleParameter, str(link.title))
+		t = str(link.title)
+		if t and not re.match('^\s*$', t):
+			t = t.strip()
+			tpl.add(TplLinktitleParameter, t)
 		# newstr = '{{' + newTplName + '|' + TplUrlParameter + '=' + str(link.url) + '|name=' + str(link.title) + '}}'
 		code.replace(link, str(tpl))
 		# print(str(tpl))
@@ -104,7 +106,7 @@ def pagenameFromParameter(regexp, s):
 		n = n[0]
 		if not re.match('^[\d\s]+$', n): return n
 
-def paramValueFromLinkOrPagename(tpl, parameter, link, regexp, PageNameArg=False):
+def isPagenameInLink(tpl, parameter, link, regexp):
 	links = ('ссылка', 'url', 'ссылка часть', link)
 	print(link)
 	for link in links:
@@ -113,18 +115,12 @@ def paramValueFromLinkOrPagename(tpl, parameter, link, regexp, PageNameArg=False
 			link = str(tpl.get(link).value)
 			link = urllib.request.unquote(link)
 			n = pagenameFromParameter(regexp, link)
-			if not n: return
-
-			# n = re.findall(regexp, link)
-	# if n:
-		# n = n[0]
-		# if re.match('^[\d\s]+$', n): return
-	# # else:	n = sys.argv[1]			
-			# if PageNameArg:				
-			tpl.add(parameter, n)
-			# else: 	tpl.get(parameter).value = PageNameArg
-	# print(n)
-	# print(link)
+			return n
+	
+def paramValueFromLinkOrPagename(tpl, parameter, link, regexp):
+	n = isPagenameInLink(tpl, parameter, link, regexp)
+	if not n: return
+	tpl.add(parameter, n)
 
 def separateLinkFromPartParameter(tpl):
 	part = 'часть'
