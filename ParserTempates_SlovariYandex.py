@@ -24,13 +24,22 @@ pagenameFromLink = r'/(?:БСЭ/|%D0%91%D0%A1%D0%AD/|article.xml\?book=bse&title
 
 code = mwparserfromhell.parse(text)
 
-reSymbols = r'[.,;:"/—−-]'
+reSymbols = r'[.,;:›"/\s—−-]*'
 reEnd = reSymbols + '$'
 reBegin = '^' + reSymbols
-reV = r'(?:\bв\s+)?'
-reBSE = r'(?:БСЭ|[Бб]ольш(ая|ой) [Сс]оветск(ая|ой) [Ээ]нциклопеди[яи])?'
+reV = r'(?:\b(?:в|из|на)\s+)?'
+reBSE = reSymbols + r'\(?["«]*(?:\[\[)?(?:БСЭ|[Бб]ольш(ая|ой) [Сс]оветск(ая|ой) [Ээ]нциклопеди[яи])(?:\]\])?["»]*\)?[.,:;\s›—−-]*'
+reYS = 'Яндекс[.\s]*(?:Словар(?:[еьи]|ях))?'
 reRemoveFromTitles = [
-	reV + reBSE,
+	'Биография на (?:сайте )?(?:["\'«]?Яндекс[.\s]*Словари["\'»]?|(?:slovari.)?yandex.ru)',
+	'(?:В 30 т.)?[—−/ -]*М.: "?Советская энциклопедия"?[,.] 1969[—−/ -]*1978',
+	'^Биография' + reV + reBSE,
+	'^Биография$',
+	'Электронная версия',
+	reSymbols + reV + reYS,
+	'1969[\s—−-]*1978',
+	'\d-е изд(?:\.|ание)?',
+	reSymbols + reV + reBSE,
 	'[Сс]татья' + reV,
 	reBegin,
 	reEnd,
@@ -90,7 +99,7 @@ for template in code.filter_templates():
 					renameParam(template, 'заглавие', 'title')
 					renamedTitle = False
 			else:
-				paramValueFromLinkOrPagename(template, 'заглавие', 2, pagenameFromLink, True)
+				paramValueFromLinkOrPagename(template, 'заглавие', 2, pagenameFromLink)
 
 			if template.has(2) or template.has('ссылка') or template.has('url'):
 				findAndDeleteLink(template, link2remove, (2,))
@@ -133,7 +142,17 @@ for template in code.filter_templates():
 					# # template.add('заглавие', sys.argv[1])
 			# # # print(template)
 
-			# просто чистка и парсинг url в 'Из БСЭ'
+		# просто чистка и парсинг url в 'Из БСЭ'
+
+			# заглавия из ссылок, удаление имеющихся введённых вручную заглавий
+			for p in ('заглавие', 'title', 2):
+				if template.has(p):
+					if isPagenameInLink(template, p, 1, pagenameFromLink):
+						template.get(p).value = ''
+
+			if template.has('заглавие'):
+				if template.get('заглавие').value == 'None':
+					template.get('заглавие').value = ''
 			deleteEmptyParam(template, (1, 2, 'title', 'заглавие'))
 			if template.has('title') or template.has('заглавие') or template.has(2):
 				renamedTitle = False
@@ -145,8 +164,14 @@ for template in code.filter_templates():
 				if renamedTitle == True: # переименовать title как было, чтобы небыло вопросов, и не надо было отвечать
 					renameParam(template, 'заглавие', 'title')
 					renamedTitle = False
+
+				# # заглавия из ссылок, удаление имеющихся введённых вручную заглавий
+				# if isPagenameInLink(template, 'заглавие', 1, pagenameFromLink, True):
+					# paramValueFromLinkOrPagename(template, 'заглавие', 1, pagenameFromLink, True)
 			else:
-				paramValueFromLinkOrPagename(template, 'заглавие', 1, pagenameFromLink, True)
+				paramValueFromLinkOrPagename(template, 'заглавие', 1, pagenameFromLink)
+			if not template.has('заглавие'):
+				template.name = r'БСЭ3|заглавие='
 
 			if template.has(1) or template.has('ссылка') or template.has('url'):
 				findAndDeleteLink(template, link2remove, (1,))
@@ -167,7 +192,7 @@ for template in code.filter_templates():
 				separateLinkFromPartParameter(template)
 				template.remove('заглавие')
 				if template.has('часть'):
-					paramValueFromLinkOrPagename(template, 'часть', '', pagenameFromLink, True)
+					paramValueFromLinkOrPagename(template, 'часть', '', pagenameFromLink)
 					renameParam(template, 'часть', 'статья')
 				findAndDeleteLink(template, link2remove)
 				# removeTplParametersExceptThis(template, ('автор', 'статья', 'заглавие', 'том', 'страницы', 'ref', 				'archiveurl', 'archivedate'))
