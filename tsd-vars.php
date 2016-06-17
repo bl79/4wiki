@@ -1,6 +1,6 @@
 <?php
 require 'my.php';
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 
 $tom	= 1;
 switch ($tom) {
