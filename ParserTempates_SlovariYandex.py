@@ -14,17 +14,23 @@ f.close()
 ParametersToRemove = (
 	'место', 'издательство', 'язык', 'тип', 'год', 'ответственные', 'publisher', 'archiveurl', 'archivedate',
 	'accessdate')
+
+renameTemplateTo = r'Отечественные певцы 1750-1917'
+urlPartWithPagename = r'Отечественные%20певцы|%D0%9E%D1%82%D0%B5%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B5%20%D0%BF%D0%B5%D0%B2%D1%86%D1%8B'
+pagenameFromLink = r'/(?:' + urlPartWithPagename + ')/([^]|/?&}\n]+)/?'
+link2remove_DicSignature = urlPartWithPagename  # + r'|' + r''
 # renameTemplateTo = 'Кто есть кто в современной культуре‎‎'
 # pagenameFromLink = r'/(?:Кто%20есть%20кто%20в%20культуре/|%D0%9A%D1%82%D0%BE%20%D0%B5%D1%81%D1%82%D1%8C%20%D0%BA%D1%82%D0%BE%20%D0%B2%20%D0%BA%D1%83%D0%BB%D1%8C%D1%82%D1%83%D1%80%D0%B5/)([^]|/?&}\n]+)/?'
 # link2removebase = r'Кто%20есть%20кто%20в%20культуре|%D0%9A%D1%82%D0%BE%20%D0%B5%D1%81%D1%82%D1%8C%20%D0%BA%D1%82%D0%BE%20%D0%B2%20%D0%BA%D1%83%D0%BB%D1%8C%D1%82%D1%83%D1%80%D0%B5|dict/who-is-who'
-renameTemplateTo = r'Вокально-энциклопедический словарь'
-pagenameFromLink = r'/(?:Вокально-энциклопедический%20словарь/|%D0%92%D0%BE%D0%BA%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE-%D1%8D%D0%BD%D1%86%D0%B8%D0%BA%D0%BB%D0%BE%D0%BF%D0%B5%D0%B4%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9%20%D1%81%D0%BB%D0%BE%D0%B2%D0%B0%D1%80%D1%8C/)([^]|/?&}\n]+)/?'
-link2removebase = r'Вокально-энциклопедический%20словарь|%D0%92%D0%BE%D0%BA%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE-%D1%8D%D0%BD%D1%86%D0%B8%D0%BA%D0%BB%D0%BE%D0%BF%D0%B5%D0%B4%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9%20%D1%81%D0%BB%D0%BE%D0%B2%D0%B0%D1%80%D1%8C|dict/agin'
+renameTemplateToVS = r'Вокально-энциклопедический словарь'
+pagenameFromLinkVS = r'/(?:Вокально-энциклопедический%20словарь/|%D0%92%D0%BE%D0%BA%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE-%D1%8D%D0%BD%D1%86%D0%B8%D0%BA%D0%BB%D0%BE%D0%BF%D0%B5%D0%B4%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9%20%D1%81%D0%BB%D0%BE%D0%B2%D0%B0%D1%80%D1%8C/)([^]|/?&}\n]+)/?'
+link2remove_DicSignatureVS = r'Вокально-энциклопедический%20словарь|%D0%92%D0%BE%D0%BA%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE-%D1%8D%D0%BD%D1%86%D0%B8%D0%BA%D0%BB%D0%BE%D0%BF%D0%B5%D0%B4%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9%20%D1%81%D0%BB%D0%BE%D0%B2%D0%B0%D1%80%D1%8C|dict/agin'
+link2removeVS = r'https?://(?:www\.|m\.)?slovari\.yandex\.ru/[^|\s]*(' + link2remove_DicSignatureVS + ')'
 # renameTemplateToIzBSE = 'Из БСЭ'
 # pagenameFromLink = r'/(?:БСЭ/|%D0%91%D0%A1%D0%AD/|article.xml\?book=bse&title=|dict/bse)(?:/[^]/}]*)?/([^]|/?&}\s\n]+)'
 # pagenameFromLink = r'/(?:БСЭ|%D0%91%D0%A1%D0%AD|dict/bse)(?:/[^]/}]*)?/(?:\d+/\d+\.htm\?text=)?([^]/}\s\n]+)'
 # pagenameFromLink = r'/(?:БСЭ|%D0%91%D0%A1%D0%AD|dict/bse)(?:/[^]/}]*)?/([^]|/?&}\s\n]+)'  (?:/[^]/}]*)?
-link2remove = r'https?://(?:www\.|m\.)?slovari\.yandex\.ru/[^|\s]*(' + link2removebase + ')'
+link2remove = r'https?://(?:www\.|m\.)?slovari\.yandex\.ru/[^|\s]*(' + link2remove_DicSignature + ')'
 link2removeSY = r'https?://(?:www\.|m\.)?slovari\.yandex\.ru'
 
 code = mwparserfromhell.parse(text)
@@ -35,17 +41,23 @@ reBegin = '^' + reSymbols
 reTire = '[\s—−-]+'
 reV = r'(?:\b(?:в|из|на)\s+)?'
 reBSE = reSymbols + r'\(?["«]*(?:\[\[)?(?:БСЭ|[Бб]ольш(ая|ой) [Сс]оветск(ая|ой) [Ээ]нциклопеди[яи])(?:\]\])?["»]*\)?[.,:;\s›—−-]*'
-reYS = 'Яндекс[.\s]*(?:Словар(?:[еьи]|ях))?'
+reYS = '["\'«]?(Яндекс[е]?[.\s]*(?:Словар(?:[еьи]|ях))?|(?:slovari.)?yandex.ru)["\'»]?'
 reRemoveFromTitles = [
-	r'(?:Биография|Данные) на (?:сайте )?(?:["\'«]?Яндекс[.\s]*Словар(?:и|ях)["\'»]?|(?:slovari.)?yandex.ru)',
-	r'["\'«]?(?:[Яя]ндекс|[Yy]andex)[.\s:-]*(?:[Сс]ловари|[Ss]lovari)["\'»]?',
+	r'.*',  # внимание: это удаление всего заголовка ссылки, для взятия его из url. только для словарей с именем в url
+	r'(в )?[Сс]ловар(?:[еьи]|ях)?.*?(?:на )?(?:сайте )?' + reYS,
+	r'(?:Биография|Данные)? (?:на )?(?:сайте )?' + reYS,
+	# r'["\'«]?(?:[Яя]ндекс|[Yy]andex)[.\s:-]*(?:[Сс]ловари|[Ss]lovari)["\'»]?',
 	r'[Сс]ловари',
 	'Биография',
+	r'{{мёртвая ссылка\|число=14\|месяц=06\|год=2016}}',
+	r'(?:\[\[Пружанский, Аркадий Михайлович\|)?Пружанский\s*А.\s*М.(?:&#93;&#93;)?\s*Отечественные певцы. 1750[\s—−-]+1917: Словарь.[\s—−-]+Изд. 2-е испр. и доп., электронное.[\s—−-]+М., 2008',
 	# r'(?:В 30 т.)?[—−/ -]*М.: "?Советская энциклопедия"?[,.] 1969[—−/ -]*1978',
-	r'(?:в (?:словаре|энциклопедиии|книге|справочнике) )?["«]*Кто есть кто в(?: современной)? культуре["»]*',
+	# r'(?:в (?:словаре|энциклопедиии|книге|справочнике) )?["«]*Кто есть кто в(?: современной)? культуре["»]*',
+	r'(?:в\s+(?:словаре|энциклопедии|книге|справочнике)\s*)?["«]*Отечественные певцы["»]*',
 	r'[\s.]*Эксклюзивные биографии.[\s—−-]+Выпуск 1[\s—−-]+2.[\s—−-]+М.: МК[\s—−-]+Периодика, 2006[\s—−-]+2007\.?',
 	r'[[\s]*(Агин, Михаил Суренович\|)?Агин М\.\s*С\.[]\s]*(?:&#93;{{мёртвая ссылка\|число=14\|месяц=06\|год=2016}}&#93;)?\s*Вокально-энциклопедический словарь. \(?Биобиблиография\)?. В 5 т.[\s—−-]+М.,\s*1991[\s—−-]+1994\]*',
-	r'Вокально-энциклопедический словарь, 1991-1994',
+	r'Вокально-энциклопедический словарь(?:, 1991-1994)?',
+	r'Отечественные певцы(?:[.\s—−-]+2008)?',
 	'<!-- Заголовок добавлен ботом -->',
 	r'^Биография' + reV + reBSE,
 	r'^Биография$',
@@ -59,6 +71,7 @@ reRemoveFromTitles = [
 	  reEnd,
 	  ]
 link2template(code, link2remove, renameTemplateTo, 'ссылка', '1', reRemoveFromTitles, pagenameFromLink)
+link2template(code, link2removeVS, renameTemplateToVS, 'ссылка', '1', reRemoveFromTitles, pagenameFromLinkVS)
 
 # print(code)
 # for template in code.filter_templates():
