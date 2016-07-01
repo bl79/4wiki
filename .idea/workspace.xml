@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/wef/Gadget-wefcore.js" line="6101" />
+    <bookmark url="file://$PROJECT_DIR$/wef/Gadget-wefcore.js" line="6121" />
+    <bookmark url="file://$PROJECT_DIR$/wef/Gadget-wefcore.js" line="3017" />
+    <bookmark url="file://$PROJECT_DIR$/wef/Gadget-wefcore.js" line="6128" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="b095b633-b7c4-4870-b4fe-0e3e8931ed6a" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wef/Gadget-wefbook.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ParserTempates_SlovariYandex.py" afterPath="$PROJECT_DIR$/ParserTempates_SlovariYandex.py" />
     </list>
     <ignored path="4wiki.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -16,8 +25,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/4wiki$ParserTempates_SlovariYandex__1_.coverage" NAME="ParserTempates_SlovariYandex Coverage Results" MODIFIED="1466104552639" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/4wiki$ParserTempates_SlovariYandex.coverage" NAME="ParserTempates_SlovariYandex Coverage Results" MODIFIED="1466340794352" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/4wiki$ParserTempates_SlovariYandex.coverage" NAME="ParserTempates_SlovariYandex Coverage Results" MODIFIED="1467246305621" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -31,11 +39,14 @@
       <file leaf-file-name="ParserTempates_SlovariYandex.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ParserTempates_SlovariYandex.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="23" column="84" selection-start-line="23" selection-start-column="84" selection-end-line="23" selection-end-column="84" />
+            <state relative-caret-position="170">
+              <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
               <folding>
-                <element signature="e#4679#4692#0" expanded="false" />
-                <marker date="1466424878786" expanded="true" signature="1263:1612" placeholder="..." />
+                <element signature="e#1166#1169#0" expanded="false" />
+                <element signature="e#2054#2057#0" expanded="false" />
+                <element signature="e#2924#4472#0" expanded="false" />
+                <element signature="e#4844#4857#0" expanded="false" />
+                <marker date="1467338614609" expanded="true" signature="1722:2049" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -44,11 +55,9 @@
       <file leaf-file-name="my.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/my.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2244">
+            <state relative-caret-position="228">
               <caret line="133" column="0" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
-              <folding>
-                <element signature="e#4659#4925#0" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -58,10 +67,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="HTML File" />
         <option value="PHP xml parser" />
         <option value="PHP html parser" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -82,6 +91,10 @@
         <option value="$PROJECT_DIR$/ya.php" />
         <option value="$PROJECT_DIR$/tsd-vars.php" />
         <option value="$PROJECT_DIR$/my.py" />
+        <option value="$PROJECT_DIR$/wef/Gadget-wefbook.js" />
+        <option value="ru.wikipedia.org/w/load.php?debug=false&amp;lang=ru&amp;modules=jquery%2Cmediawiki&amp;only=scripts&amp;skin=vector&amp;version=f47W3i0j" />
+        <option value="$PROJECT_DIR$/wef/Gadget-wefcore.js" />
+        <option value="ru.wikipedia.org/wiki/%D0%AD%D1%82%D1%82%D0%B5%D0%B9%D0%BB%D0%BB%D0%B0" />
         <option value="$PROJECT_DIR$/ParserTempates_SlovariYandex.py" />
       </list>
     </option>
@@ -97,7 +110,7 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-6" />
+    <option name="x" value="-7" />
     <option name="y" value="87" />
     <option name="width" value="986" />
     <option name="height" value="752" />
@@ -146,11 +159,28 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="4wiki" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="4wiki" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="4wiki" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="Scratches" />
       <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane />
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -163,6 +193,7 @@
   </component>
   <component name="RecentsManager">
     <key name="OPEN_URL_DIALOG">
+      <recent name="https://ru.wikipedia.org/wiki/%D0%AD%D1%82%D1%82%D0%B5%D0%B9%D0%BB%D0%BB%D0%B0" />
       <recent name="https://ru.wikipedia.org/wiki/%D0%91%D0%B8%D0%B1%D0%BB%D0%B8%D1%8F" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -179,22 +210,7 @@
     <configuration default="false" name="ya.php" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" engineId="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" uri="http://localhost:63342/4wiki/ya.php">
       <method />
     </configuration>
-    <configuration default="false" name="ParserTempates_SlovariYandex - BSE.py" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="4wiki" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ParserTempates_SlovariYandex - BSE.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
+    <configuration default="false" name="Эттейлла" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" engineId="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" uri="https://ru.wikipedia.org/wiki/Эттейлла">
       <method />
     </configuration>
     <configuration default="false" name="ParserTempates_SlovariYandex" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -288,7 +304,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="4wiki" />
+      <module name="" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="" />
       <option name="PARAMETERS" value="" />
@@ -438,13 +454,13 @@
       <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.Библия" />
       <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.js-test.php" />
       <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.ya.php" />
-      <item index="3" class="java.lang.String" itemvalue="Python.ParserTempates_SlovariYandex - BSE.py" />
+      <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.Эттейлла" />
       <item index="4" class="java.lang.String" itemvalue="Python.ParserTempates_SlovariYandex" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.ParserTempates_SlovariYandex" />
-        <item index="1" class="java.lang.String" itemvalue="Python.ParserTempates_SlovariYandex - BSE.py" />
+        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.Эттейлла" />
         <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.ya.php" />
         <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.js-test.php" />
         <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.Библия" />
@@ -473,11 +489,12 @@
       <workItem from="1465193493724" duration="24000" />
       <workItem from="1465337076010" duration="12000" />
       <workItem from="1465811125692" duration="15066000" />
+      <workItem from="1466868897003" duration="34386000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43940000" />
+    <option name="totallyTimeSpent" value="78326000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -489,29 +506,29 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="87" width="986" height="752" extended-state="0" />
+    <frame x="-7" y="87" width="986" height="752" extended-state="1" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19409283" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20194384" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32770744" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287483" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32630098" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2497332" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32770744" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33709678" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32770744" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="101" y="100" width="778" height="669" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32802126" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32554945" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3085622" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -528,15 +545,40 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/wef/Gadget-wefbook.js</url>
+          <line>234</line>
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/wef/Gadget-wefbook.js</url>
+          <line>233</line>
+          <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/wef/Gadget-wefbook.js</url>
+          <line>230</line>
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/wef/Gadget-wefcore.js</url>
+          <line>5983</line>
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/ParserTempates_SlovariYandex.py</url>
-          <line>257</line>
-          <option name="timeStamp" value="24" />
+          <line>280</line>
+          <option name="timeStamp" value="52" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/ParserTempates_SlovariYandex.py</url>
+          <line>96</line>
+          <option name="timeStamp" value="54" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/my.py</url>
           <line>133</line>
-          <option name="timeStamp" value="27" />
+          <option name="timeStamp" value="56" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -549,40 +591,29 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="29" />
+      <option name="time" value="57" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
         <watch expression="str(code)" />
       </configuration>
       <configuration name="JavascriptDebugType">
-        <watch expression="$html" />
-        <watch expression="$a" />
-        <watch expression="$xpath" />
-        <watch expression="$dl" />
+        <watch expression="selectCreateEditor" />
+        <watch expression="createOrEditButton" />
+        <watch expression="select" />
+        <watch expression="wef_editors_registry" />
+        <watch expression="entityId" />
+        <watch expression="wef_LabelsCache" />
+        <watch expression="label" />
+        <watch expression="selectEditEditor" />
+        <watch expression="listener" />
+        <watch expression="editor" />
+        <watch expression="editorDataType" />
+        <watch expression="options" />
       </configuration>
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test.js" />
-    <entry file="file://$PROJECT_DIR$/yandex-slovari-list.php" />
-    <entry file="file://$PROJECT_DIR$/e.php" />
-    <entry file="file://$PROJECT_DIR$/tsd-vars.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ya.html" />
-    <entry file="file://$PROJECT_DIR$/ya.php" />
-    <entry file="file://$PROJECT_DIR$/my.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ParserTempates_SlovariYandex - BSE.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-344">
@@ -590,13 +621,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_bundle/pydev_monkey_qt.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_bundle/pydev_monkey_qt.py" />
     <entry file="file://C:/Python35/Lib/urllib/parse.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="134">
@@ -608,9 +633,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="133" column="0" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
-          <folding>
-            <element signature="e#4659#4925#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -619,8 +642,11 @@
         <state relative-caret-position="153">
           <caret line="20" column="62" selection-start-line="20" selection-start-column="62" selection-end-line="20" selection-end-column="62" />
           <folding>
-            <element signature="e#4679#4692#0" expanded="false" />
-            <marker date="1466424878786" expanded="true" signature="1263:1612" placeholder="..." />
+            <element signature="e#1166#1169#0" expanded="false" />
+            <element signature="e#2054#2057#0" expanded="false" />
+            <element signature="e#2924#4472#0" expanded="false" />
+            <element signature="e#4844#4857#0" expanded="false" />
+            <marker date="1467338614609" expanded="true" signature="1722:2049" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -630,8 +656,11 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#4679#4692#0" expanded="false" />
-            <marker date="1466424878786" expanded="true" signature="1263:1612" placeholder="..." />
+            <element signature="e#1166#1169#0" expanded="false" />
+            <element signature="e#2054#2057#0" expanded="false" />
+            <element signature="e#2924#4472#0" expanded="false" />
+            <element signature="e#4844#4857#0" expanded="false" />
+            <marker date="1467338614609" expanded="true" signature="1722:2049" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -640,9 +669,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2295">
           <caret line="136" column="0" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
-          <folding>
-            <element signature="e#4659#4925#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -799,37 +826,236 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_bundle/pydev_monkey_qt.py">
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_bundle/pydev_monkey_qt.py" />
+    <entry file="file://$PROJECT_DIR$/wef/Gadget-wefcore-old.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+        <state relative-caret-position="17">
+          <caret line="5959" column="23" selection-start-line="5959" selection-start-column="23" selection-end-line="5959" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/HTML5.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="2447" column="0" selection-start-line="2447" selection-start-column="0" selection-end-line="2447" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="https://ru.wikipedia.org/w/load.php?debug=false&amp;lang=ru&amp;modules=jquery%2Cmediawiki&amp;only=scripts&amp;skin=vector&amp;version=f47W3i0j">
+      <provider selected="true" editor-type-id="httpFileEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wef/Gadget-wefcore.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="6414" column="0" selection-start-line="6414" selection-start-column="0" selection-end-line="6414" selection-end-column="0" />
+          <folding>
+            <element signature="e#17670#17737#0" expanded="false" />
+            <element signature="e#17869#17903#0" expanded="false" />
+            <element signature="e#19420#19434#0" expanded="false" />
+            <element signature="e#26276#26616#0" expanded="false" />
+            <element signature="e#21429#21459#0" expanded="false" />
+            <element signature="e#21874#21922#0" expanded="false" />
+            <element signature="e#21998#22044#0" expanded="false" />
+            <element signature="e#25255#25320#0" expanded="false" />
+            <element signature="e#25738#25831#0" expanded="false" />
+            <element signature="e#26320#26385#0" expanded="false" />
+            <element signature="e#26531#26597#0" expanded="false" />
+            <element signature="e#26670#26745#0" expanded="false" />
+            <element signature="e#26882#26997#0" expanded="false" />
+            <element signature="e#27415#27487#0" expanded="false" />
+            <element signature="e#30546#30584#0" expanded="false" />
+            <element signature="e#31647#31707#0" expanded="false" />
+            <element signature="e#31744#31805#0" expanded="false" />
+            <element signature="e#32302#32347#0" expanded="false" />
+            <element signature="e#39170#39393#0" expanded="false" />
+            <element signature="e#32984#33029#0" expanded="false" />
+            <element signature="e#34052#34110#0" expanded="false" />
+            <element signature="e#35191#35258#0" expanded="false" />
+            <element signature="e#36312#36467#0" expanded="false" />
+            <element signature="e#38419#38478#0" expanded="false" />
+            <element signature="e#38910#38942#0" expanded="false" />
+            <element signature="e#41259#41347#0" expanded="false" />
+            <element signature="e#41835#41862#0" expanded="false" />
+            <element signature="e#44035#44120#0" expanded="false" />
+            <element signature="e#44721#44764#0" expanded="false" />
+            <element signature="e#44874#44959#0" expanded="false" />
+            <element signature="e#45801#45843#0" expanded="false" />
+            <element signature="e#47712#47768#0" expanded="false" />
+            <element signature="e#48747#48780#0" expanded="false" />
+            <element signature="e#48835#48868#0" expanded="false" />
+            <element signature="e#51545#51599#0" expanded="false" />
+            <element signature="e#51988#52046#0" expanded="false" />
+            <element signature="e#52336#52406#0" expanded="false" />
+            <element signature="e#53859#53920#0" expanded="false" />
+            <element signature="e#55160#55218#0" expanded="false" />
+            <element signature="e#55618#55682#0" expanded="false" />
+            <element signature="e#56099#56172#0" expanded="false" />
+            <element signature="e#58259#58326#0" expanded="false" />
+            <element signature="e#61040#61090#0" expanded="false" />
+            <element signature="e#61523#61572#0" expanded="false" />
+            <element signature="e#61705#61750#0" expanded="false" />
+            <element signature="e#61884#61930#0" expanded="false" />
+            <element signature="e#62074#62130#0" expanded="false" />
+            <element signature="e#62345#62390#0" expanded="false" />
+            <element signature="e#62677#62724#0" expanded="false" />
+            <element signature="e#62845#62897#0" expanded="false" />
+            <element signature="e#65545#65597#0" expanded="false" />
+            <element signature="e#65970#66093#0" expanded="false" />
+            <element signature="e#67730#67796#0" expanded="false" />
+            <element signature="e#72953#73039#0" expanded="false" />
+            <element signature="e#80067#80128#0" expanded="false" />
+            <element signature="e#94284#94349#0" expanded="false" />
+            <element signature="e#88001#88038#0" expanded="false" />
+            <element signature="e#101197#101255#0" expanded="false" />
+            <element signature="e#95287#95330#0" expanded="false" />
+            <element signature="e#100638#100681#0" expanded="false" />
+            <element signature="e#101066#101089#0" expanded="false" />
+            <element signature="e#101121#101191#0" expanded="false" />
+            <element signature="e#101858#101944#0" expanded="false" />
+            <element signature="e#109277#109616#0" expanded="false" />
+            <element signature="e#102072#102124#0" expanded="false" />
+            <element signature="e#103504#103556#0" expanded="false" />
+            <element signature="e#105520#105589#0" expanded="false" />
+            <element signature="e#106109#106150#0" expanded="false" />
+            <element signature="e#107114#107159#0" expanded="false" />
+            <element signature="e#107313#107342#0" expanded="false" />
+            <element signature="e#108249#108391#0" expanded="false" />
+            <element signature="e#109482#109535#0" expanded="false" />
+            <element signature="e#110436#110482#0" expanded="false" />
+            <element signature="e#113484#113525#0" expanded="false" />
+            <element signature="e#114640#114656#0" expanded="false" />
+            <element signature="e#114729#114758#0" expanded="false" />
+            <element signature="e#115416#115477#0" expanded="false" />
+            <element signature="e#116093#116128#0" expanded="false" />
+            <element signature="e#116282#116330#0" expanded="false" />
+            <element signature="e#119034#119062#0" expanded="false" />
+            <element signature="e#119626#119703#0" expanded="false" />
+            <element signature="e#120213#120256#0" expanded="false" />
+            <element signature="e#120985#121108#0" expanded="false" />
+            <element signature="e#121146#121273#0" expanded="false" />
+            <element signature="e#123349#123366#0" expanded="false" />
+            <element signature="e#129475#129535#0" expanded="false" />
+            <element signature="e#130724#130755#0" expanded="false" />
+            <element signature="e#131878#131936#0" expanded="false" />
+            <element signature="e#134924#134993#0" expanded="false" />
+            <element signature="e#136080#136149#0" expanded="false" />
+            <element signature="e#136772#136813#0" expanded="false" />
+            <element signature="e#138331#138370#0" expanded="false" />
+            <element signature="e#139885#139940#0" expanded="false" />
+            <element signature="e#141328#141408#0" expanded="false" />
+            <element signature="e#142723#142759#0" expanded="false" />
+            <element signature="e#143449#143504#0" expanded="false" />
+            <element signature="e#144137#144186#0" expanded="false" />
+            <element signature="e#147816#147853#0" expanded="false" />
+            <element signature="e#147893#147930#0" expanded="false" />
+            <element signature="e#148044#148120#0" expanded="false" />
+            <element signature="e#149001#149127#0" expanded="false" />
+            <element signature="e#151326#151340#0" expanded="false" />
+            <element signature="e#151474#151542#0" expanded="false" />
+            <element signature="e#151650#151730#0" expanded="false" />
+            <element signature="e#157893#157946#0" expanded="false" />
+            <element signature="e#158264#158387#0" expanded="false" />
+            <element signature="e#158666#158771#0" expanded="false" />
+            <element signature="e#158902#158933#0" expanded="false" />
+            <element signature="e#159061#159101#0" expanded="false" />
+            <element signature="e#159269#159326#0" expanded="false" />
+            <element signature="e#162545#162616#0" expanded="false" />
+            <element signature="e#163784#163917#0" expanded="false" />
+            <element signature="e#163856#163914#0" expanded="false" />
+            <element signature="e#164952#165011#0" expanded="false" />
+            <element signature="e#165829#165919#0" expanded="false" />
+            <element signature="e#166207#166262#0" expanded="false" />
+            <element signature="e#166338#166448#0" expanded="false" />
+            <element signature="e#166633#166671#0" expanded="false" />
+            <element signature="e#166722#166761#0" expanded="false" />
+            <element signature="e#167499#167538#0" expanded="false" />
+            <element signature="e#169367#169385#0" expanded="false" />
+            <element signature="e#169438#169566#0" expanded="false" />
+            <element signature="e#171512#171602#0" expanded="false" />
+            <element signature="e#171654#171719#0" expanded="false" />
+            <element signature="e#171773#171815#0" expanded="false" />
+            <element signature="e#172180#172224#0" expanded="false" />
+            <element signature="e#172321#172364#0" expanded="false" />
+            <element signature="e#174218#174259#0" expanded="false" />
+            <element signature="e#174363#174427#0" expanded="false" />
+            <element signature="e#175153#175227#0" expanded="false" />
+            <element signature="e#181590#181677#0" expanded="false" />
+            <element signature="e#182560#182607#0" expanded="false" />
+            <element signature="e#182674#182734#0" expanded="false" />
+            <element signature="e#184102#184140#0" expanded="false" />
+            <element signature="e#185316#185354#0" expanded="false" />
+            <element signature="e#186103#186132#0" expanded="false" />
+            <element signature="e#186595#186627#0" expanded="false" />
+            <element signature="e#187628#187676#0" expanded="false" />
+            <element signature="e#187738#187790#0" expanded="false" />
+            <element signature="e#187874#187969#0" expanded="false" />
+            <element signature="e#188185#188222#0" expanded="false" />
+            <element signature="e#190597#190615#0" expanded="false" />
+            <element signature="e#190702#190758#0" expanded="false" />
+            <element signature="e#191039#191136#0" expanded="false" />
+            <element signature="e#193207#193268#0" expanded="false" />
+            <element signature="e#194273#194321#0" expanded="false" />
+            <element signature="e#194734#194816#0" expanded="false" />
+            <element signature="e#194952#194994#0" expanded="false" />
+            <element signature="e#195105#195149#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wef/Gadget-wefexternallinks.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="2843" column="36" selection-start-line="2843" selection-start-column="36" selection-end-line="2843" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="https://ru.wikipedia.org/wiki/%D0%AD%D1%82%D1%82%D0%B5%D0%B9%D0%BB%D0%BB%D0%B0">
+      <provider selected="true" editor-type-id="httpFileEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wef/Gadget-wefbook.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="421">
+          <caret line="230" column="26" selection-start-line="230" selection-start-column="26" selection-end-line="230" selection-end-column="26" />
+          <folding>
+            <element signature="e#10048#10175#0" expanded="false" />
+            <element signature="e#10216#10349#0" expanded="false" />
+            <element signature="e#10446#10477#0" expanded="false" />
+            <element signature="e#10550#10983#0" expanded="false" />
+            <element signature="e#11031#11464#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://C:/Python35/Lib/urllib/parse.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
+        <state relative-caret-position="126">
           <caret line="536" column="0" selection-start-line="536" selection-start-column="0" selection-end-line="536" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/my.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2244">
+        <state relative-caret-position="228">
           <caret line="133" column="0" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
-          <folding>
-            <element signature="e#4659#4925#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ParserTempates_SlovariYandex.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="23" column="84" selection-start-line="23" selection-start-column="84" selection-end-line="23" selection-end-column="84" />
+        <state relative-caret-position="170">
+          <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
           <folding>
-            <element signature="e#4679#4692#0" expanded="false" />
-            <marker date="1466424878786" expanded="true" signature="1263:1612" placeholder="..." />
+            <element signature="e#1166#1169#0" expanded="false" />
+            <element signature="e#2054#2057#0" expanded="false" />
+            <element signature="e#2924#4472#0" expanded="false" />
+            <element signature="e#4844#4857#0" expanded="false" />
+            <marker date="1467338614609" expanded="true" signature="1722:2049" placeholder="..." />
           </folding>
         </state>
       </provider>

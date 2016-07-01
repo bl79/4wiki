@@ -15,22 +15,41 @@ ParametersToRemove = (
 	'место', 'издательство', 'язык', 'тип', 'год', 'ответственные', 'publisher', 'archiveurl', 'archivedate',
 	'accessdate')
 
-renameTemplateTo = r'Отечественные певцы 1750-1917'
-urlPartWithPagename = r'Отечественные%20певцы|%D0%9E%D1%82%D0%B5%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B5%20%D0%BF%D0%B5%D0%B2%D1%86%D1%8B'
-pagenameFromLink = r'/(?:' + urlPartWithPagename + ')/([^]|/?&}\n]+)/?'
-link2remove_DicSignature = urlPartWithPagename  # + r'|' + r''
-# renameTemplateTo = 'Кто есть кто в современной культуре‎‎'
-# pagenameFromLink = r'/(?:Кто%20есть%20кто%20в%20культуре/|%D0%9A%D1%82%D0%BE%20%D0%B5%D1%81%D1%82%D1%8C%20%D0%BA%D1%82%D0%BE%20%D0%B2%20%D0%BA%D1%83%D0%BB%D1%8C%D1%82%D1%83%D1%80%D0%B5/)([^]|/?&}\n]+)/?'
-# link2removebase = r'Кто%20есть%20кто%20в%20культуре|%D0%9A%D1%82%D0%BE%20%D0%B5%D1%81%D1%82%D1%8C%20%D0%BA%D1%82%D0%BE%20%D0%B2%20%D0%BA%D1%83%D0%BB%D1%8C%D1%82%D1%83%D1%80%D0%B5|dict/who-is-who'
-renameTemplateToVS = r'Вокально-энциклопедический словарь'
-pagenameFromLinkVS = r'/(?:Вокально-энциклопедический%20словарь/|%D0%92%D0%BE%D0%BA%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE-%D1%8D%D0%BD%D1%86%D0%B8%D0%BA%D0%BB%D0%BE%D0%BF%D0%B5%D0%B4%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9%20%D1%81%D0%BB%D0%BE%D0%B2%D0%B0%D1%80%D1%8C/)([^]|/?&}\n]+)/?'
-link2remove_DicSignatureVS = r'Вокально-энциклопедический%20словарь|%D0%92%D0%BE%D0%BA%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE-%D1%8D%D0%BD%D1%86%D0%B8%D0%BA%D0%BB%D0%BE%D0%BF%D0%B5%D0%B4%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9%20%D1%81%D0%BB%D0%BE%D0%B2%D0%B0%D1%80%D1%8C|dict/agin'
-link2removeVS = r'https?://(?:www\.|m\.)?slovari\.yandex\.ru/[^|\s]*(' + link2remove_DicSignatureVS + ')'
-# renameTemplateToIzBSE = 'Из БСЭ'
-# pagenameFromLink = r'/(?:БСЭ/|%D0%91%D0%A1%D0%AD/|article.xml\?book=bse&title=|dict/bse)(?:/[^]/}]*)?/([^]|/?&}\s\n]+)'
-# pagenameFromLink = r'/(?:БСЭ|%D0%91%D0%A1%D0%AD|dict/bse)(?:/[^]/}]*)?/(?:\d+/\d+\.htm\?text=)?([^]/}\s\n]+)'
-# pagenameFromLink = r'/(?:БСЭ|%D0%91%D0%A1%D0%AD|dict/bse)(?:/[^]/}]*)?/([^]|/?&}\s\n]+)'  (?:/[^]/}]*)?
-link2remove = r'https?://(?:www\.|m\.)?slovari\.yandex\.ru/[^|\s]*(' + link2remove_DicSignature + ')'
+
+dics = [
+	{
+		'renameTemplateTo': 'Из БОЭ|title=',
+		'urlPartWithPagename': r'Олимпийская%20энциклопедия|%D0%9E%D0%BB%D0%B8%D0%BC%D0%BF%D0%B8%D0%B9%D1%81%D0%BA%D0%B0%D1%8F%20%D1%8D%D0%BD%D1%86%D0%B8%D0%BA%D0%BB%D0%BE%D0%BF%D0%B5%D0%B4%D0%B8%D1%8F',
+		'addSignature': r'|dict/olympic',
+	},
+	{
+		'renameTemplateTo': 'Революционеры',
+		'urlPartWithPagename': r'Революционеры|%D0%A0%D0%B5%D0%B2%D0%BE%D0%BB%D1%8E%D1%86%D0%B8%D0%BE%D0%BD%D0%B5%D1%80%D1%8B',
+		'addSignature': r'|dict/revoluc',
+	},
+	{
+		'renameTemplateTo': r'Отечественные певцы 1750-1917',
+		'urlPartWithPagename': r'Отечественные%20певцы|%D0%9E%D1%82%D0%B5%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B5%20%D0%BF%D0%B5%D0%B2%D1%86%D1%8B',
+		'addSignature': '',
+	},
+	# {
+		# renameTemplateTo : 'Кто есть кто в современной культуре‎‎',
+		# 'addSignature': 'dict/who-is-who',
+		# pagenameFromLink : r'/(?:Кто%20есть%20кто%20в%20культуре/|%D0%9A%D1%82%D0%BE%20%D0%B5%D1%81%D1%82%D1%8C%20%D0%BA%D1%82%D0%BE%20%D0%B2%20%D0%BA%D1%83%D0%BB%D1%8C%D1%82%D1%83%D1%80%D0%B5/)([^]|/?&}\n]+)/?',
+		# link2removebase : r'Кто%20есть%20кто%20в%20культуре|%D0%9A%D1%82%D0%BE%20%D0%B5%D1%81%D1%82%D1%8C%20%D0%BA%D1%82%D0%BE%20%D0%B2%20%D0%BA%D1%83%D0%BB%D1%8C%D1%82%D1%83%D1%80%D0%B5|dict/who-is-who',
+	# },
+	{
+		'renameTemplateTo': r'Вокально-энциклопедический словарь',
+		'urlPartWithPagename': r'Вокально-энциклопедический%20словарь|%D0%92%D0%BE%D0%BA%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE-%D1%8D%D0%BD%D1%86%D0%B8%D0%BA%D0%BB%D0%BE%D0%BF%D0%B5%D0%B4%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9%20%D1%81%D0%BB%D0%BE%D0%B2%D0%B0%D1%80%D1%8C',
+		'addSignature': r'|dict/agin',
+	},
+	# {
+		# renameTemplateToIzBSE : 'Из БСЭ'
+		# pagenameFromLink : r'/(?:БСЭ/|%D0%91%D0%A1%D0%AD/|article.xml\?book=bse&title=|dict/bse)(?:/[^]/}]*)?/([^]|/?&}\s\n]+)'
+		# pagenameFromLink : r'/(?:БСЭ|%D0%91%D0%A1%D0%AD|dict/bse)(?:/[^]/}]*)?/(?:\d+/\d+\.htm\?text=)?([^]/}\s\n]+)'
+		# pagenameFromLink : r'/(?:БСЭ|%D0%91%D0%A1%D0%AD|dict/bse)(?:/[^]/}]*)?/([^]|/?&}\s\n]+)'  (?:/[^]/}]*)?
+	# },
+	]
 link2removeSY = r'https?://(?:www\.|m\.)?slovari\.yandex\.ru'
 
 code = mwparserfromhell.parse(text)
@@ -38,10 +57,10 @@ code = mwparserfromhell.parse(text)
 reSymbols = r'[.,;:›"/\s—−-]*'
 reEnd = reSymbols + '$'
 reBegin = '^' + reSymbols
-reTire = '[\s—−-]+'
+reTire = r'[\s—−-]+'
 reV = r'(?:\b(?:в|из|на)\s+)?'
 reBSE = reSymbols + r'\(?["«]*(?:\[\[)?(?:БСЭ|[Бб]ольш(ая|ой) [Сс]оветск(ая|ой) [Ээ]нциклопеди[яи])(?:\]\])?["»]*\)?[.,:;\s›—−-]*'
-reYS = '["\'«]?(Яндекс[е]?[.\s]*(?:Словар(?:[еьи]|ях))?|(?:slovari.)?yandex.ru)["\'»]?'
+reYS = r'["\'«]?(Яндекс[е]?[.\s]*(?:Словар(?:[еьи]|ях))?|(?:slovari.)?yandex.ru)["\'»]?'
 reRemoveFromTitles = [
 	r'.*',  # внимание: это удаление всего заголовка ссылки, для взятия его из url. только для словарей с именем в url
 	r'(в )?[Сс]ловар(?:[еьи]|ях)?.*?(?:на )?(?:сайте )?' + reYS,
@@ -62,16 +81,20 @@ reRemoveFromTitles = [
 	r'^Биография' + reV + reBSE,
 	r'^Биография$',
 	r'Электронная версия',
-	  reSymbols + reV + reYS,
+	reSymbols + reV + reYS,
 	r'1969[\s—−-]*1978',
 	r'\d-е изд(?:\.|ание)?',
-	  reSymbols + reV + reBSE,
+	reSymbols + reV + reBSE,
 	r'[Сс]татья' + reV,
-	  reBegin,
-	  reEnd,
-	  ]
-link2template(code, link2remove, renameTemplateTo, 'ссылка', '1', reRemoveFromTitles, pagenameFromLink)
-link2template(code, link2removeVS, renameTemplateToVS, 'ссылка', '1', reRemoveFromTitles, pagenameFromLinkVS)
+	reBegin,
+	reEnd,
+	]
+
+for dic in dics:
+	pagenameFromLink = r'/(?:' + dic['urlPartWithPagename'] + r')/([^]|/?&}\n]+)/?'
+	link2remove_DicSignature = dic['urlPartWithPagename'] + dic['addSignature']
+	link2remove = link2removeSY + r'/[^|\s]*(' + str(link2remove_DicSignature) + ')'
+	link2template(code, link2remove, dic['renameTemplateTo'], 'ссылка', '1', reRemoveFromTitles, pagenameFromLink)
 
 # print(code)
 # for template in code.filter_templates():
@@ -254,6 +277,7 @@ link2template(code, link2removeVS, renameTemplateToVS, 'ссылка', '1', reRe
 
 # print(str(code))
 # print(9)
+text = str(code)
 f = open(filename, 'w', encoding='utf-8')
-f.write(str(code))
+f.write(text)
 f.close()
