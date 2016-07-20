@@ -18,19 +18,34 @@ ParametersToRemove = (
 
 dics = [
 	{
-		'renameTemplateTo': 'Из БОЭ|title=',
+		'renameTemplateTo': 'Книга:Энциклопедия «Москва» 1997',
+		'urlPartWithPagename': r'Энциклопедия%20«Москва»|%D0%AD%D0%BD%D1%86%D0%B8%D0%BA%D0%BB%D0%BE%D0%BF%D0%B5%D0%B4%D0%B8%D1%8F%20%C2%AB%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%C2%BB|Энциклопедия%20%C2%ABМосква%C2%BB',
+		'addSignature': r'|dict/mos',
+		'paramTitle': '1',
+	},
+	{
+		'renameTemplateTo': 'Имена московских улиц',
+		'urlPartWithPagename': r'Московские%20улицы|%D0%9C%D0%BE%D1%81%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B5%20%D1%83%D0%BB%D0%B8%D1%86%D1%8B',
+		'addSignature': r'|dict/mostoponim',
+		'paramTitle': '1',
+	},
+	{
+		'renameTemplateTo': 'Из БОЭ',
 		'urlPartWithPagename': r'Олимпийская%20энциклопедия|%D0%9E%D0%BB%D0%B8%D0%BC%D0%BF%D0%B8%D0%B9%D1%81%D0%BA%D0%B0%D1%8F%20%D1%8D%D0%BD%D1%86%D0%B8%D0%BA%D0%BB%D0%BE%D0%BF%D0%B5%D0%B4%D0%B8%D1%8F',
 		'addSignature': r'|dict/olympic',
+		'paramTitle': 'title',
 	},
 	{
 		'renameTemplateTo': 'Революционеры',
 		'urlPartWithPagename': r'Революционеры|%D0%A0%D0%B5%D0%B2%D0%BE%D0%BB%D1%8E%D1%86%D0%B8%D0%BE%D0%BD%D0%B5%D1%80%D1%8B',
 		'addSignature': r'|dict/revoluc',
+		'paramTitle': '1',
 	},
 	{
 		'renameTemplateTo': r'Отечественные певцы 1750-1917',
 		'urlPartWithPagename': r'Отечественные%20певцы|%D0%9E%D1%82%D0%B5%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B5%20%D0%BF%D0%B5%D0%B2%D1%86%D1%8B',
 		'addSignature': '',
+		'paramTitle': '1',
 	},
 	# {
 		# renameTemplateTo : 'Кто есть кто в современной культуре‎‎',
@@ -42,6 +57,7 @@ dics = [
 		'renameTemplateTo': r'Вокально-энциклопедический словарь',
 		'urlPartWithPagename': r'Вокально-энциклопедический%20словарь|%D0%92%D0%BE%D0%BA%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE-%D1%8D%D0%BD%D1%86%D0%B8%D0%BA%D0%BB%D0%BE%D0%BF%D0%B5%D0%B4%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9%20%D1%81%D0%BB%D0%BE%D0%B2%D0%B0%D1%80%D1%8C',
 		'addSignature': r'|dict/agin',
+		'paramTitle': '1',
 	},
 	# {
 		# renameTemplateToIzBSE : 'Из БСЭ'
@@ -77,6 +93,7 @@ reRemoveFromTitles = [
 	r'[[\s]*(Агин, Михаил Суренович\|)?Агин М\.\s*С\.[]\s]*(?:&#93;{{мёртвая ссылка\|число=14\|месяц=06\|год=2016}}&#93;)?\s*Вокально-энциклопедический словарь. \(?Биобиблиография\)?. В 5 т.[\s—−-]+М.,\s*1991[\s—−-]+1994\]*',
 	r'Вокально-энциклопедический словарь(?:, 1991-1994)?',
 	r'Отечественные певцы(?:[.\s—−-]+2008)?',
+	# r'На Яндекс[.:\s]*[Тт]опонимика',
 	'<!-- Заголовок добавлен ботом -->',
 	r'^Биография' + reV + reBSE,
 	r'^Биография$',
@@ -94,8 +111,18 @@ for dic in dics:
 	pagenameFromLink = r'/(?:' + dic['urlPartWithPagename'] + r')/([^]|/?&}\n]+)/?'
 	link2remove_DicSignature = dic['urlPartWithPagename'] + dic['addSignature']
 	link2remove = link2removeSY + r'/[^|\s]*(' + str(link2remove_DicSignature) + ')'
-	link2template(code, link2remove, dic['renameTemplateTo'], 'ссылка', '1', reRemoveFromTitles, pagenameFromLink)
 
+	for template in code.filter_templates():
+		if template.name.matches(('cite web', 'cite news')) and findLink(template, link2remove):
+			newtpl = mwparserfromhell.nodes.template.Template(dic['renameTemplateTo'])
+			if template.has('title'):
+				title = str(template.get('title').value.strip())
+				newtpl.add(dic['paramTitle'], title)
+			code.replace(template, str(newtpl))
+
+	link2template(code, link2remove, dic['renameTemplateTo'], 'ссылка', dic['paramTitle'], reRemoveFromTitles, pagenameFromLink)
+				
+				
 # print(code)
 # for template in code.filter_templates():
 # 	# print(template)

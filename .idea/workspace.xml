@@ -7,11 +7,12 @@
     <bookmark url="file://$PROJECT_DIR$/wef/Gadget-wefcore.js" line="6128" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b095b633-b7c4-4870-b4fe-0e3e8931ed6a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wef/Gadget-wefbook.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+    <list default="true" id="b095b633-b7c4-4870-b4fe-0e3e8931ed6a" name="Default" comment="up">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vagrant.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/toDO/toDO.php" afterPath="$PROJECT_DIR$/toDO/toDO.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ParserTempates_SlovariYandex.py" afterPath="$PROJECT_DIR$/ParserTempates_SlovariYandex.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my.py" afterPath="$PROJECT_DIR$/my.py" />
     </list>
     <ignored path="4wiki.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,7 +26,8 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/4wiki$ParserTempates_SlovariYandex.coverage" NAME="ParserTempates_SlovariYandex Coverage Results" MODIFIED="1467246305621" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/4wiki$pwb_category.coverage" NAME="pwb_category Coverage Results" MODIFIED="1469008976547" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/4wiki$ParserTempates_SlovariYandex.coverage" NAME="ParserTempates_SlovariYandex Coverage Results" MODIFIED="1468548875569" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -36,17 +38,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ParserTempates_SlovariYandex.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ParserTempates_SlovariYandex.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ParserTempates_SlovariYandex.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
+            <state relative-caret-position="17">
+              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding>
-                <element signature="e#1166#1169#0" expanded="false" />
-                <element signature="e#2054#2057#0" expanded="false" />
-                <element signature="e#2924#4472#0" expanded="false" />
-                <element signature="e#4844#4857#0" expanded="false" />
-                <marker date="1467338614609" expanded="true" signature="1722:2049" placeholder="..." />
+                <element signature="e#1811#1814#0" expanded="false" />
+                <element signature="e#2720#2723#0" expanded="false" />
+                <element signature="e#5945#5958#0" expanded="false" />
+                <marker date="1468620670785" expanded="true" signature="2367:2715" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -55,8 +56,23 @@
       <file leaf-file-name="my.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/my.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="133" column="0" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
+            <state relative-caret-position="274">
+              <caret line="174" column="94" selection-start-line="174" selection-start-column="14" selection-end-line="174" selection-end-column="94" />
+              <folding>
+                <element signature="e#3723#3936#0" expanded="false" />
+                <element signature="e#3972#4204#0" expanded="false" />
+                <element signature="e#4267#4396#0" expanded="false" />
+                <element signature="e#4437#4502#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pwb_category.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pwb_category.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -90,12 +106,14 @@
         <option value="$PROJECT_DIR$/e.php" />
         <option value="$PROJECT_DIR$/ya.php" />
         <option value="$PROJECT_DIR$/tsd-vars.php" />
-        <option value="$PROJECT_DIR$/my.py" />
         <option value="$PROJECT_DIR$/wef/Gadget-wefbook.js" />
         <option value="ru.wikipedia.org/w/load.php?debug=false&amp;lang=ru&amp;modules=jquery%2Cmediawiki&amp;only=scripts&amp;skin=vector&amp;version=f47W3i0j" />
         <option value="$PROJECT_DIR$/wef/Gadget-wefcore.js" />
         <option value="ru.wikipedia.org/wiki/%D0%AD%D1%82%D1%82%D0%B5%D0%B9%D0%BB%D0%BB%D0%B0" />
         <option value="$PROJECT_DIR$/ParserTempates_SlovariYandex.py" />
+        <option value="$PROJECT_DIR$/my.py" />
+        <option value="$PROJECT_DIR$/pwb category.py" />
+        <option value="$PROJECT_DIR$/pwb_category.py" />
       </list>
     </option>
   </component>
@@ -110,10 +128,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-7" />
-    <option name="y" value="87" />
-    <option name="width" value="986" />
-    <option name="height" value="752" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1604" />
+    <option name="height" value="886" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -185,7 +203,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Python" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
     <property name="settings.editor.splitter.proportion" value="0.23212537" />
     <property name="last_opened_file_path" value="C:/Program Files/Git/cmd/git.exe" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
@@ -200,13 +218,7 @@
       <recent name="D:\home\scripts.my\4wiki" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.ParserTempates_SlovariYandex">
-    <configuration default="false" name="Библия" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" engineId="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" uri="https://ru.wikipedia.org/wiki/Библия">
-      <method />
-    </configuration>
-    <configuration default="false" name="js-test.php" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" engineId="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" uri="http://localhost:63342/4wiki/js-test.php">
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Python.pwb_category">
     <configuration default="false" name="ya.php" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" engineId="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" uri="http://localhost:63342/4wiki/ya.php">
       <method />
     </configuration>
@@ -227,6 +239,24 @@
       <module name="4wiki" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ParserTempates_SlovariYandex.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="pwb category" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="4wiki" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pwb category.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -450,20 +480,37 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
+    <configuration default="false" name="pwb_category" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="4wiki" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pwb_category.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.Библия" />
-      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.js-test.php" />
+      <item index="0" class="java.lang.String" itemvalue="Python.pwb_category" />
+      <item index="1" class="java.lang.String" itemvalue="Python.pwb category" />
       <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.ya.php" />
       <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.Эттейлла" />
       <item index="4" class="java.lang.String" itemvalue="Python.ParserTempates_SlovariYandex" />
     </list>
     <recent_temporary>
-      <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.ParserTempates_SlovariYandex" />
-        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.Эттейлла" />
-        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.ya.php" />
-        <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.js-test.php" />
-        <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.Библия" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="Python.pwb category" />
+        <item index="1" class="java.lang.String" itemvalue="Python.ParserTempates_SlovariYandex" />
+        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.Эттейлла" />
+        <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.ya.php" />
       </list>
     </recent_temporary>
   </component>
@@ -506,20 +553,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="87" width="986" height="752" extended-state="1" />
+    <frame x="-8" y="-8" width="1604" height="886" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20194384" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12953368" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32770744" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32630098" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934928" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32536522" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934928" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2497332" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32770744" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32669324" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33709678" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28286853" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32770744" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -567,18 +614,58 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/ParserTempates_SlovariYandex.py</url>
-          <line>280</line>
+          <line>307</line>
           <option name="timeStamp" value="52" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/ParserTempates_SlovariYandex.py</url>
-          <line>96</line>
+          <line>123</line>
           <option name="timeStamp" value="54" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/ParserTempates_SlovariYandex.py</url>
+          <line>120</line>
+          <option name="timeStamp" value="57" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/my.py</url>
-          <line>133</line>
-          <option name="timeStamp" value="56" />
+          <line>103</line>
+          <option name="timeStamp" value="64" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/ParserTempates_SlovariYandex.py</url>
+          <line>117</line>
+          <option name="timeStamp" value="65" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/ParserTempates_SlovariYandex.py</url>
+          <line>115</line>
+          <option name="timeStamp" value="66" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/ParserTempates_SlovariYandex.py</url>
+          <line>116</line>
+          <option name="timeStamp" value="68" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/ParserTempates_SlovariYandex.py</url>
+          <line>114</line>
+          <option name="timeStamp" value="72" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/ParserTempates_SlovariYandex.py</url>
+          <line>119</line>
+          <option name="timeStamp" value="73" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/ParserTempates_SlovariYandex.py</url>
+          <line>118</line>
+          <option name="timeStamp" value="74" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/pwb_category.py</url>
+          <line>7</line>
+          <option name="timeStamp" value="90" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -591,11 +678,12 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="57" />
+      <option name="time" value="91" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
         <watch expression="str(code)" />
+        <watch expression="tpl" />
       </configuration>
       <configuration name="JavascriptDebugType">
         <watch expression="selectCreateEditor" />
@@ -614,14 +702,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ParserTempates_SlovariYandex - BSE.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-344">
-          <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_bundle/pydev_monkey_qt.py" />
     <entry file="file://C:/Python35/Lib/urllib/parse.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="134">
@@ -633,7 +713,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="133" column="0" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#3723#3936#0" expanded="false" />
+            <element signature="e#3972#4204#0" expanded="false" />
+            <element signature="e#4267#4396#0" expanded="false" />
+            <element signature="e#4437#4502#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -642,11 +727,10 @@
         <state relative-caret-position="153">
           <caret line="20" column="62" selection-start-line="20" selection-start-column="62" selection-end-line="20" selection-end-column="62" />
           <folding>
-            <element signature="e#1166#1169#0" expanded="false" />
-            <element signature="e#2054#2057#0" expanded="false" />
-            <element signature="e#2924#4472#0" expanded="false" />
-            <element signature="e#4844#4857#0" expanded="false" />
-            <marker date="1467338614609" expanded="true" signature="1722:2049" placeholder="..." />
+            <element signature="e#1811#1814#0" expanded="false" />
+            <element signature="e#2720#2723#0" expanded="false" />
+            <element signature="e#5945#5958#0" expanded="false" />
+            <marker date="1468620670785" expanded="true" signature="2367:2715" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -656,11 +740,10 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1166#1169#0" expanded="false" />
-            <element signature="e#2054#2057#0" expanded="false" />
-            <element signature="e#2924#4472#0" expanded="false" />
-            <element signature="e#4844#4857#0" expanded="false" />
-            <marker date="1467338614609" expanded="true" signature="1722:2049" placeholder="..." />
+            <element signature="e#1811#1814#0" expanded="false" />
+            <element signature="e#2720#2723#0" expanded="false" />
+            <element signature="e#5945#5958#0" expanded="false" />
+            <marker date="1468620670785" expanded="true" signature="2367:2715" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -669,7 +752,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2295">
           <caret line="136" column="0" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#3723#3936#0" expanded="false" />
+            <element signature="e#3972#4204#0" expanded="false" />
+            <element signature="e#4267#4396#0" expanded="false" />
+            <element signature="e#4437#4502#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1034,29 +1122,48 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="536" column="0" selection-start-line="536" selection-start-column="0" selection-end-line="536" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ParserTempates_SlovariYandex.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding>
+            <element signature="e#1811#1814#0" expanded="false" />
+            <element signature="e#2720#2723#0" expanded="false" />
+            <element signature="e#5945#5958#0" expanded="false" />
+            <marker date="1468620670785" expanded="true" signature="2367:2715" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pwb category.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/my.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="133" column="0" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="274">
+          <caret line="174" column="94" selection-start-line="174" selection-start-column="14" selection-end-line="174" selection-end-column="94" />
+          <folding>
+            <element signature="e#3723#3936#0" expanded="false" />
+            <element signature="e#3972#4204#0" expanded="false" />
+            <element signature="e#4267#4396#0" expanded="false" />
+            <element signature="e#4437#4502#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ParserTempates_SlovariYandex.py">
+    <entry file="file://$PROJECT_DIR$/pwb_category.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
-          <folding>
-            <element signature="e#1166#1169#0" expanded="false" />
-            <element signature="e#2054#2057#0" expanded="false" />
-            <element signature="e#2924#4472#0" expanded="false" />
-            <element signature="e#4844#4857#0" expanded="false" />
-            <marker date="1467338614609" expanded="true" signature="1722:2049" placeholder="..." />
-          </folding>
+        <state relative-caret-position="68">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

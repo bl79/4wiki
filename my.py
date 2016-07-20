@@ -62,7 +62,7 @@ def deleteParamArhiveurlDateIfWebarchive(tpl):
 
 
 # Конвертация ссылки типа '[https?://url title]' в шаблон. reRemoveFromTitles - список литералов-регэкспов для вычистки из заголовка.
-def link2template(code, regexpSearchLink, newTplName, TplUrlParameter, TplLinktitleParameter, reRemoveFromTitles, pagenameFromLink):
+def link2template(code, regexpSearchLink, newTplName, TplUrlParameter, TplLinktitleParameter, reRemoveFromTitles, rePageTitleFromLink):
     # code = mwparserfromhell.parse(text)
     reLink = re.compile(regexpSearchLink)
     for link in code.filter_external_links():
@@ -77,7 +77,7 @@ def link2template(code, regexpSearchLink, newTplName, TplUrlParameter, TplLinkti
                 t = t.strip()
                 tpl.add(TplLinktitleParameter, t)
         else:
-            paramValueFromLinkOrPagename(tpl, TplLinktitleParameter, TplUrlParameter, pagenameFromLink)
+            paramValueFromLinkOrPagename(tpl, TplLinktitleParameter, TplUrlParameter, rePageTitleFromLink)
         findAndDeleteLink(tpl, regexpSearchLink)
         deleteEmptyParam(tpl, (TplUrlParameter,))
         # else: print('hh')
@@ -85,6 +85,24 @@ def link2template(code, regexpSearchLink, newTplName, TplUrlParameter, TplLinkti
         code.replace(link, str(tpl))
         # print(str(tpl))
         # return str(code)
+
+
+def paramValueFromLinkOrPagename(tpl, paramtitle, paramlink, rePageTitleFromLink):
+    title = getPagenameFromLink(tpl, paramlink, rePageTitleFromLink)
+    if not title: return
+    tpl.add(paramtitle, title)
+
+
+def getPagenameFromLink(tpl, paramlink, reTitleFromLink):
+    paramlinks = ('ссылка', 'url', 'ссылка часть', paramlink)
+    for plink in paramlinks:
+        if tpl.has(plink):
+            import urllib.request
+            url = str(tpl.get(plink).value)
+            titleFromLink = pagenameFromUrl(reTitleFromLink, url)
+            if titleFromLink is None: return ''
+            urldecodedTitleFromLink = urllib.request.unquote(titleFromLink)
+            return urldecodedTitleFromLink
 
 
 def deleteEmptyParam(tpl, keys):
@@ -124,23 +142,6 @@ def pagenameFromUrl(regexp, url):
         if not re.match('^[\d\s]+$', title): return title
 
 
-def isPagenameInLink(tpl, paramlink, reTitleFromLink):
-    paramlinks = ('ссылка', 'url', 'ссылка часть', paramlink)
-    for plink in paramlinks:
-        if tpl.has(plink):
-            import urllib.request
-            url = str(tpl.get(plink).value)
-            n = pagenameFromUrl(reTitleFromLink, url)
-            n = urllib.request.unquote(n)
-            return n
-
-
-def paramValueFromLinkOrPagename(tpl, paramtitle, paramlink, reTitleFromLink):
-    n = isPagenameInLink(tpl, paramlink, reTitleFromLink)
-    if not n: return
-    tpl.add(paramtitle, n)
-
-
 # если в "часть=" ссылка, то разделить на заглавие в "часть=" и ссылку в "ссылка часть="
 def separateLinkFromPartParameter(tpl):
     part = 'часть'
@@ -152,3 +153,30 @@ def separateLinkFromPartParameter(tpl):
         if n:
             tpl.add(link, n[0][0])
             tpl.get(part).value = n[0][1]
+
+
+
+
+# ---------
+
+
+def movePagesToNewCategory(from_, to_, summary_):
+	# command = "python movepages.my -noredirect"
+	command = 'python c:\pwb\pwb.py movepages.my -pt:0 -noredirect -simulate'
+	from_ = ' -from:"' + from_ + '"'
+	to_ = ' -to:"' + to_ + '"'
+	summary_ = ' -summary:"' + summary_ + '"'
+	run = command + from_ + to_ + summary_
+	os.system(run)
+
+
+def renameCategory(from_, to_, summary_):
+	# command = "python category.py move"
+	command = 'python c:\pwb\pwb.py category.py move -pt:0 -inplace -simulate' #  -keepsortkey
+	from_ = ' -from:"' + from_ + '"'
+	to_ = ' -to:"' + to_ + '"'
+	summary_ = ' -summary:"' + summary_ + '"'
+	run = command + from_ + to_ + summary_
+
+
+
