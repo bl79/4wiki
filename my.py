@@ -155,6 +155,13 @@ def separateLinkFromPartParameter(tpl):
             tpl.get(part).value = n[0][1]
 
 
+# ---------
+
+
+def getparameters_aliases(tpl, list_parameters_to_search):
+	for p in list_parameters_to_search:
+		if tpl.has(p):
+			return tpl.get(p).value
 
 
 # ---------
