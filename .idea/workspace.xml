@@ -7,8 +7,10 @@
     <bookmark url="file://$PROJECT_DIR$/wef/Gadget-wefcore.js" line="6128" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b095b633-b7c4-4870-b4fe-0e3e8931ed6a" name="Default" comment="">
+    <list default="true" id="b095b633-b7c4-4870-b4fe-0e3e8931ed6a" name="Default" comment="up">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WDnewitems_for_tools.wmflabs.org-quick_statements.py" afterPath="$PROJECT_DIR$/WDnewitems_for_tools.wmflabs.org-quick_statements.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/broken_sfn_anchors.py" afterPath="$PROJECT_DIR$/broken_sfn_anchors.py" />
     </list>
     <ignored path="4wiki.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -22,9 +24,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/4wiki$pwb_category.coverage" NAME="pwb_category Coverage Results" MODIFIED="1469010275350" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/4wiki$ParserTempates_SlovariYandex.coverage" NAME="ParserTempates_SlovariYandex Coverage Results" MODIFIED="1468548875569" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/4wiki$WDnewitems.coverage" NAME="WDnewitems Coverage Results" MODIFIED="1469984962028" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/4wiki$broken_sfn_anchors.coverage" NAME="broken_sfn_anchors Coverage Results" MODIFIED="1470315975815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -45,36 +45,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="my.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/my.py">
+      <file leaf-file-name="broken_sfn_anchors.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/broken_sfn_anchors.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2635">
-              <caret line="174" column="45" selection-start-line="174" selection-start-column="14" selection-end-line="174" selection-end-column="45" />
+            <state relative-caret-position="264">
+              <caret line="87" column="25" selection-start-line="87" selection-start-column="25" selection-end-line="87" selection-end-column="25" />
               <folding>
-                <element signature="e#3723#3936#0" expanded="false" />
-                <element signature="e#3972#4204#0" expanded="false" />
-                <element signature="e#4267#4396#0" expanded="false" />
-                <element signature="e#4437#4502#0" expanded="false" />
+                <marker date="1470316108218" expanded="true" signature="3532:3559" placeholder="SELECT * FRO... page" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pwb_category.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pwb_category.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WDnewitems_for_tools.wmflabs.org-quick_statements.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="WDnewitems_for_tools.wmflabs.org-quick_statements.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WDnewitems_for_tools.wmflabs.org-quick_statements.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="411">
-              <caret line="29" column="41" selection-start-line="29" selection-start-column="41" selection-end-line="29" selection-end-column="41" />
+            <state relative-caret-position="2210">
+              <caret line="130" column="54" selection-start-line="130" selection-start-column="54" selection-end-line="130" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -119,6 +106,8 @@
         <option value="$PROJECT_DIR$/pwb_category.py" />
         <option value="$PROJECT_DIR$/WDnewitems.py" />
         <option value="$PROJECT_DIR$/WDnewitems_for_tools.wmflabs.org-quick_statements.py" />
+        <option value="$PROJECT_DIR$/db_wmflabs.php" />
+        <option value="$PROJECT_DIR$/broken_sfn_anchors.py" />
       </list>
     </option>
   </component>
@@ -133,9 +122,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-7" />
-    <option name="width" value="1604" />
-    <option name="height" value="877" />
+    <option name="x" value="-16" />
+    <option name="y" value="13" />
+    <option name="width" value="912" />
+    <option name="height" value="869" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -181,28 +171,11 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="4wiki" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="4wiki" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="4wiki" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
+        <subPane />
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -222,7 +195,25 @@
       <recent name="D:\home\scripts.my\4wiki" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.WDnewitems">
+  <component name="RunManager" selected="Python.broken_sfn_anchors">
+    <configuration default="false" name="WDnewitems" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="4wiki" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="D:\home\scripts.my\4wiki\WDnewitems_for_tools.wmflabs.org-quick_statements.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
     <configuration default="false" name="pwb category" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -247,7 +238,7 @@
     <configuration default="false" name="Эттейлла" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" engineId="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" uri="https://ru.wikipedia.org/wiki/Эттейлла">
       <method />
     </configuration>
-    <configuration default="false" name="ParserTempates_SlovariYandex" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="broken_sfn_anchors" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -260,25 +251,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="4wiki" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ParserTempates_SlovariYandex.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="WDnewitems" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="4wiki" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="D:\home\scripts.my\4wiki\WDnewitems_for_tools.wmflabs.org-quick_statements.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/broken_sfn_anchors.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -522,19 +495,17 @@
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Python.pwb_category" />
-      <item index="1" class="java.lang.String" itemvalue="Python.pwb category" />
-      <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.ya.php" />
-      <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.Эттейлла" />
-      <item index="4" class="java.lang.String" itemvalue="Python.ParserTempates_SlovariYandex" />
-      <item index="5" class="java.lang.String" itemvalue="Python.WDnewitems" />
+      <item index="1" class="java.lang.String" itemvalue="Python.WDnewitems" />
+      <item index="2" class="java.lang.String" itemvalue="Python.pwb category" />
+      <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.ya.php" />
+      <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.Эттейлла" />
+      <item index="5" class="java.lang.String" itemvalue="Python.broken_sfn_anchors" />
     </list>
     <recent_temporary>
-      <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.WDnewitems" />
-        <item index="1" class="java.lang.String" itemvalue="Python.pwb category" />
-        <item index="2" class="java.lang.String" itemvalue="Python.ParserTempates_SlovariYandex" />
-        <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.Эттейлла" />
-        <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.ya.php" />
+      <list size="3">
+        <item index="0" class="java.lang.String" itemvalue="Python.broken_sfn_anchors" />
+        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.Эттейлла" />
+        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.ya.php" />
       </list>
     </recent_temporary>
   </component>
@@ -561,6 +532,7 @@
       <workItem from="1465337076010" duration="12000" />
       <workItem from="1465811125692" duration="15066000" />
       <workItem from="1466868897003" duration="34386000" />
+      <workItem from="1470279768813" duration="899000" />
     </task>
     <task id="LOCAL-00001" summary="up">
       <created>1469009175791</created>
@@ -583,11 +555,25 @@
       <option name="project" value="LOCAL" />
       <updated>1469985313399</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="up">
+      <created>1469985326456</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1469985326456</updated>
+    </task>
+    <task id="LOCAL-00005" summary="up">
+      <created>1469986744772</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1469986744772</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78326000" />
+    <option name="totallyTimeSpent" value="79225000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -599,20 +585,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1604" height="877" extended-state="0" />
+    <frame x="-16" y="13" width="912" height="869" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13212435" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3261745" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22012039" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3252688" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32392472" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32157394" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3229308" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2497332" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3261745" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28590605" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39891452" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32770744" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -663,59 +649,14 @@
           <option name="timeStamp" value="49" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/ParserTempates_SlovariYandex.py</url>
-          <line>307</line>
-          <option name="timeStamp" value="52" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/ParserTempates_SlovariYandex.py</url>
-          <line>123</line>
-          <option name="timeStamp" value="54" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/ParserTempates_SlovariYandex.py</url>
-          <line>120</line>
-          <option name="timeStamp" value="57" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/my.py</url>
-          <line>103</line>
-          <option name="timeStamp" value="64" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/ParserTempates_SlovariYandex.py</url>
-          <line>117</line>
-          <option name="timeStamp" value="65" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/ParserTempates_SlovariYandex.py</url>
+          <url>file://$PROJECT_DIR$/broken_sfn_anchors.py</url>
           <line>115</line>
-          <option name="timeStamp" value="66" />
+          <option name="timeStamp" value="100" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/ParserTempates_SlovariYandex.py</url>
-          <line>116</line>
-          <option name="timeStamp" value="68" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/ParserTempates_SlovariYandex.py</url>
-          <line>114</line>
-          <option name="timeStamp" value="72" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/ParserTempates_SlovariYandex.py</url>
-          <line>119</line>
-          <option name="timeStamp" value="73" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/ParserTempates_SlovariYandex.py</url>
-          <line>118</line>
-          <option name="timeStamp" value="74" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/pwb_category.py</url>
-          <line>29</line>
-          <option name="timeStamp" value="91" />
+          <url>file://$PROJECT_DIR$/broken_sfn_anchors.py</url>
+          <line>81</line>
+          <option name="timeStamp" value="106" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -728,12 +669,15 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="95" />
+      <option name="time" value="107" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
         <watch expression="str(code)" />
-        <watch expression="tpl" />
+        <watch expression="refs" />
+        <watch expression="list_refs" />
+        <watch expression="sfns" />
+        <watch expression="template" />
       </configuration>
       <configuration name="JavascriptDebugType">
         <watch expression="selectCreateEditor" />
@@ -752,35 +696,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ParserTempates_SlovariYandex.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="20" column="62" selection-start-line="20" selection-start-column="62" selection-end-line="20" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ParserTempates_SlovariYandex.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/my.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2295">
-          <caret line="136" column="0" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
-          <folding>
-            <element signature="e#3723#3936#0" expanded="false" />
-            <element signature="e#3972#4204#0" expanded="false" />
-            <element signature="e#4267#4396#0" expanded="false" />
-            <element signature="e#4437#4502#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tsd-vars.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1156,25 +1071,13 @@
     <entry file="file://$PROJECT_DIR$/pwb category.py" />
     <entry file="file://$PROJECT_DIR$/my.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2635">
-          <caret line="174" column="45" selection-start-line="174" selection-start-column="14" selection-end-line="174" selection-end-column="45" />
-          <folding>
-            <element signature="e#3723#3936#0" expanded="false" />
-            <element signature="e#3972#4204#0" expanded="false" />
-            <element signature="e#4267#4396#0" expanded="false" />
-            <element signature="e#4437#4502#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pwb_category.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        <state relative-caret-position="3196">
+          <caret line="189" column="0" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pwb_category.py" />
     <entry file="file://$USER_HOME$/AppData/Local/Temp/Издательство М.О. Вольфа — Wikidata https---www.wikidata.org-wiki-Q26202353.url">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1184,9 +1087,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WDnewitems_for_tools.wmflabs.org-quick_statements.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="29" column="41" selection-start-line="29" selection-start-column="41" selection-end-line="29" selection-end-column="41" />
+        <state relative-caret-position="2210">
+          <caret line="130" column="54" selection-start-line="130" selection-start-column="54" selection-end-line="130" selection-end-column="54" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db_wmflabs.php" />
+    <entry file="file://C:/Python35/Lib/site-packages/pywikibot/config2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="618">
+          <caret line="277" column="0" selection-start-line="277" selection-start-column="0" selection-end-line="277" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/broken_sfn_anchors.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="87" column="25" selection-start-line="87" selection-start-column="25" selection-end-line="87" selection-end-column="25" />
+          <folding>
+            <marker date="1470316108218" expanded="true" signature="3532:3559" placeholder="SELECT * FRO... page" />
+          </folding>
         </state>
       </provider>
     </entry>

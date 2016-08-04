@@ -1,46 +1,119 @@
 ﻿# -*- coding: utf-8  -*-
 import mwparserfromhell
-import pywikibot
-from pywikibot import pagegenerators 
+# import pywikibot
+# from pywikibot import pagegenerators
 from my import *
 
 category_bad_sfn = '[[Категория:Имеются нерабочие якоря в сносках]]'
 
-def parse(title):
-	site = pywikibot.Site()
-	page = pywikibot.Page(site, title)
-	text = page.get()
-	return mwparserfromhell.parse(text)
+# def parse(title):
+# 	site = pywikibot.Site()
+# 	page = pywikibot.Page(site, title)
+# 	text = page.get()
+# 	return mwparserfromhell.parse(text)
 
-# code = parse('Т-14')
-# # print(code)
-# for template in code.filter_templates():
-	# if template.name.matches(('sfn', 'sfn0')):
-		# if template.has('1'):
-			# sfn_ref = template.get('1').value
-			# if template.has('2'):
-				# sfn_year = template.get('2').value
-		# else:
-			# print ('sfn has not parameters')
+path2script = r"d:\home\scripts.my\4wiki\\"
+filename = path2script + r'sfn1.txt'
 
-	# if template.has('ref'):
-		# tpl_ref = template.get('ref').value
-		# refcount = 1
-		# tpl_year = getparameters_aliases(template, ['год', 'year'])
+# f = open(filename, 'r', encoding='utf-8')
+# text = f.read()
+# f.close()
 
-# for template in code.filter_templates():
-	# arr = []  # list of refs
-	# if template.has('ref'):
-		# arr.append(str(template.get('ref').value))
 
-		# setarr = set(arr)
-		# if len(arr) != len(setarr):
-			# print("Есть одинаковые")
-		# # else:	print("Все элементы уникальны")
+# f = open(filename, 'r', encoding='utf-8')
+# t = f.readlines()
+# t = [line.rstrip() for line in t]
+arr_listpages = [line.rstrip() for line in open(filename, encoding='utf-8')]
+# print (t)
+# print(t, end='')
+# for line in f.readlines():
+    # print (line)
 
-# text = str(code)
 
-tpl = 'Sfn'
+list_tpls = ('sfn', 'sfn0')
+	
+for pagecontent in arr_listpages:
+
+	# pagecontent = "hhhh{{sfn|refname1|2016|loc=comment}}" \
+	# 			  "" \
+	# 			  "" \
+	# 			  "hhjgh {{книга|заглавие=ннн| ref = refname }}" \
+	# 			  "hhhh{{sfn|refname2|2015|loc=comment}}" \
+	# 			  "" \
+	# 			  "" \
+	# 			  "hhjgh {{книга|заглавие=ннн|год=2015| ref = refnamefalse}}"
+	pagecontent = "hhjg{{sfn|refname1|2016|loc=comment}}" \
+				  "" \
+				  "" \
+				  "hhjgh {{книга|заглавие=ннн|год=2016| ref = refname1 }}" \
+				  "hhhh{{sfn|refname2|2015|loc=comment}}" \
+				  "" \
+				  "" \
+				  "hhjgh {{книга|год=2015|заглавие=ннн| ref = refname2}}"
+
+
+
+	# print(p)
+	# print(parse(p))	
+	# code = parse(pagecontent)
+	code = mwparserfromhell.parse(pagecontent)
+	list_refs = []
+	list_sfns = []
+	for template in code.filter_templates():
+		if template.has('ref'):
+			refs = []
+			refs.append(template.get('ref').value.strip())
+			for year in ['год', 'year']:
+				if template.has(year):
+					refs.append(template.get(year).value.strip())
+			list_refs.append(refs)
+
+			# refcount = 1
+			# tpl_year =
+
+		if template.name.matches('sfn'):
+			if template.has('1'):
+				sfns = []
+				sfns.append(template.get('1').value.strip())
+				if template.has('2'):
+					sfns.append(template.get('2').value.strip())
+			# else:
+			# 	print ('sfn has not parameters')
+				list_sfns.append(sfns)
+
+	if list_refs != list_sfns:
+		print('sfn has not parameters')
+	# print('list_refs:')
+	# print(list_refs)
+	# print('list_sfns:')
+	# print(list_sfns)
+		# for sfn in list_sfns:
+		# 	for ref in list_refs:
+		# 		if sfn[0] != ref[0]:  continue
+		# 		else
+		# 		if sfn[1] == ref[1]:
+		# 				continue
+		# 		else
+
+				# for template in code.filter_templates():
+					# arr = []  # list of refs
+					# if template.has('ref'):
+						# arr.append(str(template.get('ref').value))
+
+						# setarr = set(arr)
+						# if len(arr) != len(setarr):
+							# print("Есть одинаковые")
+						# # else:	print("Все элементы уникальны")
+
+			# text = str(code)
+
+
+		# print(text)
+
+
+
+# tpl = 'Sfn'
+tpl = 'Вершины Каменного Пояса'
 # list = pywikibot.pagegenerators.GeneratorFactory(u'-transcludes:' + tpl)
 # list = str(pagegenerators.GeneratorFactory(u'-transcludes:' + tpl))
 args = (u'-transcludes:' + tpl,)
@@ -49,11 +122,76 @@ args = (u'-transcludes:' + tpl,)
 # gen = pagegenerators.GeneratorFactory()
 # list = gen(u'-transcludes:Sfn').getCombinedGenerator()
 
-list = pywikibot.pagegenerators.MySQLPageGenerator('SELECT page.page_namespace, page_title FROM page JOIN templatelinks ON tl_from = page_id WHERE tl_namespace = 10 AND tl_title = "Sfn" AND page_namespace = 0')
-for i in list:
-	print(i)
+# list = pywikibot.pagegenerators.MySQLPageGenerator('SELECT page_namespace, page_title FROM page JOIN templatelinks ON tl_from = page_id WHERE tl_namespace = 10 AND tl_title = "Sfn" AND page_namespace = 0')
+# list = pywikibot.pagegenerators.MySQLPageGenerator('SELECT page_namespace, page_title FROM page LIMIT 10')
+
+query = 'SELECT * FROM page LIMIT 10'
+
+# genFactory = GeneratorFactory()
+# gen = genFactory.getCombinedGenerator()
+
+# list = pywikibot.pagegenerators.MySQLPageGenerator(query)
+# for i in list:
+	# print(i)
+
+	
+# import os, sys
+# sys.stdout = open("t.txt", 'w')
+# os.system('python c:\pwb\pwb.py listpages.py -ns:0 -transcludes:"{}" -format:3 -lang:ru -family:wikipedia'.format(tpl)) 
 
 
+# from wmflabs import db
+# conn = db.connect('enwiki')  # You can also use "enwiki_p"
+# # conn is a oursql.connection object.
+# with conn.cursor() as cur:
+    # cur.execute(query)  # Or something....
+	
+	
+	
+
+
+# commands = [
+	# r'python c:\pwb\pwb.py listpages.py -transcludes:"{tpl}"', tpl,
+# ]
+# for command in commands:
+	# os.system(command)
+	# for cats in CategoriesToRename:
+		# from_ = ' -from:"' + cats[0] + '"'
+		# to_ = ' -to:"' + cats[1] + '"'
+		# summary_ = ' -summary:"' + summary + '"'
+		# run = command + from_ + to_ + summary_  # + ' -simulate'
+		# print('echo ' + run)
+		# os.system(run)
+	
+
+# from wmflabs import db
+# conn = db.connect('enwiki')  # You can also use "enwiki_p"
+# # conn is a oursql.connection object.
+# with conn.cursor() as cur:
+    # cur.execute(query)  # Or something....
+
+    # return oursql.connect(db=dbname + '_p',
+                          # host=host,
+                          # read_default_file=os.path.expanduser("~/replica.my.cnf"),
+                          # charset=None,
+                          # use_unicode=False,
+                          # )
+# host = 'enwiki' + ".labsdb"  # 'localhost'   'ruwiki.labsdb'
+# host = 'tools-login.wmflabs.org'   # 'localhost'   'ruwiki.labsdb'
+# user='vladi2016'  # 'textworkerBot'
+# password = 'goreibeda'
+# # password = 'vladidengi'
+# db = 'ruwiki_p'	
+# user='u14134'  # 'textworkerBot'
+# charset='utf8'
+	
+# import pymysql
+# import pymysql.cursors
+# conn= pymysql.connect(host,user,password,db,charset,cursorclass=pymysql.cursors.DictCursor)
+# a=conn.cursor()
+# a.execute(query)	
+	
+	
 # print (text)
 
 # import sys
