@@ -6,11 +6,22 @@ from my import *
 
 category_bad_sfn = '[[Категория:Имеются нерабочие якоря в сносках]]'
 
+
 # def parse(title):
 # 	site = pywikibot.Site()
 # 	page = pywikibot.Page(site, title)
 # 	text = page.get()
 # 	return mwparserfromhell.parse(text)
+
+
+def isSfnInRefs(list_sfns, list_refs):
+	for sfn in list_sfns:
+		# for ref in list_refs:
+		if sfn not in list_refs:
+			return False
+		else:
+			return True
+
 
 path2script = r"d:\home\scripts.my\4wiki\\"
 filename = path2script + r'sfn1.txt'
@@ -27,11 +38,11 @@ arr_listpages = [line.rstrip() for line in open(filename, encoding='utf-8')]
 # print (t)
 # print(t, end='')
 # for line in f.readlines():
-    # print (line)
+# print (line)
 
 
-list_tpls = ('sfn', 'sfn0')
-	
+list_tpls = (['sfn', 'sfn0'])
+
 for pagecontent in arr_listpages:
 
 	# pagecontent = "hhhh{{sfn|refname1|2016|loc=comment}}" \
@@ -49,9 +60,8 @@ for pagecontent in arr_listpages:
 				  "hhhh{{sfn|refname2|2015|loc=comment}}" \
 				  "" \
 				  "" \
-				  "hhjgh {{книга|год=2015|заглавие=ннн| ref = refname2}}"
-
-
+				  "hhjgh {{книга|год=20153|заглавие=ннн| ref = refname2}}" \
+				  " {{книга|заглавие=ннн| ref = refname3}}"
 
 	# print(p)
 	# print(parse(p))	
@@ -61,56 +71,48 @@ for pagecontent in arr_listpages:
 	list_sfns = []
 	for template in code.filter_templates():
 		if template.has('ref'):
-			refs = []
-			refs.append(template.get('ref').value.strip())
+			refs = [template.get('ref').value.strip()]
 			for year in ['год', 'year']:
 				if template.has(year):
 					refs.append(template.get(year).value.strip())
 			list_refs.append(refs)
 
-			# refcount = 1
-			# tpl_year =
-
-		if template.name.matches('sfn'):
+		if template.name.matches(list_tpls):
 			if template.has('1'):
-				sfns = []
-				sfns.append(template.get('1').value.strip())
+				sfns = [template.get('1').value.strip()]
 				if template.has('2'):
 					sfns.append(template.get('2').value.strip())
-			# else:
-			# 	print ('sfn has not parameters')
 				list_sfns.append(sfns)
 
-	if list_refs != list_sfns:
-		print('sfn has not parameters')
-	# print('list_refs:')
-	# print(list_refs)
-	# print('list_sfns:')
-	# print(list_sfns)
-		# for sfn in list_sfns:
-		# 	for ref in list_refs:
-		# 		if sfn[0] != ref[0]:  continue
-		# 		else
-		# 		if sfn[1] == ref[1]:
-		# 				continue
-		# 		else
+	if list_refs == list_sfns or not isSfnInRefs(list_sfns, list_refs):
+		continue
+	else:
+		print('Внимание Параметры sfn и ref не совпадают.')
 
-				# for template in code.filter_templates():
-					# arr = []  # list of refs
-					# if template.has('ref'):
-						# arr.append(str(template.get('ref').value))
+# print('list_refs:')
+# print(list_refs)
+# print('list_sfns:')
+# print(list_sfns)
 
-						# setarr = set(arr)
-						# if len(arr) != len(setarr):
-							# print("Есть одинаковые")
-						# # else:	print("Все элементы уникальны")
+# if sfn[0] == ref[0]:
+# 	if sfn[1] == ref[1]:
+# 			continue
+# 	else  continue
+#
+# for template in code.filter_templates():
+# 	arr = []  # list of refs
+# 	if template.has('ref'):
+# 		arr.append(str(template.get('ref').value))
+#
+# 		setarr = set(arr)
+# 		if len(arr) != len(setarr):
+# 			print("Есть одинаковые")
+# 		# else:	print("Все элементы уникальны")
 
-			# text = str(code)
-
-
-		# print(text)
+# text = str(code)
 
 
+# print(text)
 
 # tpl = 'Sfn'
 tpl = 'Вершины Каменного Пояса'
@@ -132,9 +134,9 @@ query = 'SELECT * FROM page LIMIT 10'
 
 # list = pywikibot.pagegenerators.MySQLPageGenerator(query)
 # for i in list:
-	# print(i)
+# print(i)
 
-	
+
 # import os, sys
 # sys.stdout = open("t.txt", 'w')
 # os.system('python c:\pwb\pwb.py listpages.py -ns:0 -transcludes:"{}" -format:3 -lang:ru -family:wikipedia'.format(tpl)) 
@@ -144,38 +146,38 @@ query = 'SELECT * FROM page LIMIT 10'
 # conn = db.connect('enwiki')  # You can also use "enwiki_p"
 # # conn is a oursql.connection object.
 # with conn.cursor() as cur:
-    # cur.execute(query)  # Or something....
-	
-	
-	
+# cur.execute(query)  # Or something....
+
+
+
 
 
 # commands = [
-	# r'python c:\pwb\pwb.py listpages.py -transcludes:"{tpl}"', tpl,
+# r'python c:\pwb\pwb.py listpages.py -transcludes:"{tpl}"', tpl,
 # ]
 # for command in commands:
-	# os.system(command)
-	# for cats in CategoriesToRename:
-		# from_ = ' -from:"' + cats[0] + '"'
-		# to_ = ' -to:"' + cats[1] + '"'
-		# summary_ = ' -summary:"' + summary + '"'
-		# run = command + from_ + to_ + summary_  # + ' -simulate'
-		# print('echo ' + run)
-		# os.system(run)
-	
+# os.system(command)
+# for cats in CategoriesToRename:
+# from_ = ' -from:"' + cats[0] + '"'
+# to_ = ' -to:"' + cats[1] + '"'
+# summary_ = ' -summary:"' + summary + '"'
+# run = command + from_ + to_ + summary_  # + ' -simulate'
+# print('echo ' + run)
+# os.system(run)
+
 
 # from wmflabs import db
 # conn = db.connect('enwiki')  # You can also use "enwiki_p"
 # # conn is a oursql.connection object.
 # with conn.cursor() as cur:
-    # cur.execute(query)  # Or something....
+# cur.execute(query)  # Or something....
 
-    # return oursql.connect(db=dbname + '_p',
-                          # host=host,
-                          # read_default_file=os.path.expanduser("~/replica.my.cnf"),
-                          # charset=None,
-                          # use_unicode=False,
-                          # )
+# return oursql.connect(db=dbname + '_p',
+# host=host,
+# read_default_file=os.path.expanduser("~/replica.my.cnf"),
+# charset=None,
+# use_unicode=False,
+# )
 # host = 'enwiki' + ".labsdb"  # 'localhost'   'ruwiki.labsdb'
 # host = 'tools-login.wmflabs.org'   # 'localhost'   'ruwiki.labsdb'
 # user='vladi2016'  # 'textworkerBot'
@@ -184,14 +186,14 @@ query = 'SELECT * FROM page LIMIT 10'
 # db = 'ruwiki_p'	
 # user='u14134'  # 'textworkerBot'
 # charset='utf8'
-	
+
 # import pymysql
 # import pymysql.cursors
 # conn= pymysql.connect(host,user,password,db,charset,cursorclass=pymysql.cursors.DictCursor)
 # a=conn.cursor()
 # a.execute(query)	
-	
-	
+
+
 # print (text)
 
 # import sys
@@ -207,72 +209,72 @@ query = 'SELECT * FROM page LIMIT 10'
 # # '''
 
 # ParametersToRemove = (
-	# 'место', 'издательство', 'язык', 'тип', 'год', 'ответственные', 'publisher', 'archiveurl', 'archivedate',
-	# 'accessdate')
+# 'место', 'издательство', 'язык', 'тип', 'год', 'ответственные', 'publisher', 'archiveurl', 'archivedate',
+# 'accessdate')
 
 # dics = [
-	# {
-		# 'renameTemplateTo': 'Книга:Городские имена сегодня и вчера|1997|заглавие=',
-		# 'urlPartWithPagename': r'Петербургская%20топонимика|%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3%D1%81%D0%BA%D0%B0%D1%8F%20%D1%82%D0%BE%D0%BF%D0%BE%D0%BD%D0%B8%D0%BC%D0%B8%D0%BA%D0%B0',
-		# 'addSignature': r'|dict/petertoponim',
-		# 'paramTitle': 'заглавие',
-		# 'paramAuthor': '',
-	# },
-	# {
-		# 'renameTemplateTo': 'Книга:Энциклопедия «Москва» 1997',
-		# 'urlPartWithPagename': r'Энциклопедия%20«Москва»|%D0%AD%D0%BD%D1%86%D0%B8%D0%BA%D0%BB%D0%BE%D0%BF%D0%B5%D0%B4%D0%B8%D1%8F%20%C2%AB%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%C2%BB|Энциклопедия%20%C2%ABМосква%C2%BB',
-		# 'addSignature': r'|dict/mos',
-		# 'paramTitle': '1',
-		# 'paramAuthor': 'автор',
-	# },
-	# {
-		# 'renameTemplateTo': 'Имена московских улиц',
-		# 'urlPartWithPagename': r'Московские%20улицы|%D0%9C%D0%BE%D1%81%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B5%20%D1%83%D0%BB%D0%B8%D1%86%D1%8B',
-		# 'addSignature': r'|dict/mostoponim',
-		# 'paramTitle': '1',
-		# 'paramAuthor': 'автор',
-	# },
-	# {
-		# 'renameTemplateTo': 'Из БОЭ',
-		# 'urlPartWithPagename': r'Олимпийская%20энциклопедия|%D0%9E%D0%BB%D0%B8%D0%BC%D0%BF%D0%B8%D0%B9%D1%81%D0%BA%D0%B0%D1%8F%20%D1%8D%D0%BD%D1%86%D0%B8%D0%BA%D0%BB%D0%BE%D0%BF%D0%B5%D0%B4%D0%B8%D1%8F',
-		# 'addSignature': r'|dict/olympic',
-		# 'paramTitle': 'title',
-		# 'paramAuthor': 'автор',
-	# },
-	# {
-		# 'renameTemplateTo': 'Революционеры',
-		# 'urlPartWithPagename': r'Революционеры|%D0%A0%D0%B5%D0%B2%D0%BE%D0%BB%D1%8E%D1%86%D0%B8%D0%BE%D0%BD%D0%B5%D1%80%D1%8B',
-		# 'addSignature': r'|dict/revoluc',
-		# 'paramTitle': '1',
-		# 'paramAuthor': 'автор',
-	# },
-	# {
-		# 'renameTemplateTo': r'Отечественные певцы 1750-1917',
-		# 'urlPartWithPagename': r'Отечественные%20певцы|%D0%9E%D1%82%D0%B5%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B5%20%D0%BF%D0%B5%D0%B2%D1%86%D1%8B',
-		# 'addSignature': '',
-		# 'paramTitle': '1',
-		# 'paramAuthor': 'автор',
-	# },
-	# # {
-		# # renameTemplateTo : 'Кто есть кто в современной культуре‎‎',
-		# # 'addSignature': 'dict/who-is-who',
-		# # pagenameFromLink : r'/(?:Кто%20есть%20кто%20в%20культуре/|%D0%9A%D1%82%D0%BE%20%D0%B5%D1%81%D1%82%D1%8C%20%D0%BA%D1%82%D0%BE%20%D0%B2%20%D0%BA%D1%83%D0%BB%D1%8C%D1%82%D1%83%D1%80%D0%B5/)([^]|/?&}\n]+)/?',
-		# # link2removebase : r'Кто%20есть%20кто%20в%20культуре|%D0%9A%D1%82%D0%BE%20%D0%B5%D1%81%D1%82%D1%8C%20%D0%BA%D1%82%D0%BE%20%D0%B2%20%D0%BA%D1%83%D0%BB%D1%8C%D1%82%D1%83%D1%80%D0%B5|dict/who-is-who',
-	# # },
-	# {
-		# 'renameTemplateTo': r'Вокально-энциклопедический словарь',
-		# 'urlPartWithPagename': r'Вокально-энциклопедический%20словарь|%D0%92%D0%BE%D0%BA%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE-%D1%8D%D0%BD%D1%86%D0%B8%D0%BA%D0%BB%D0%BE%D0%BF%D0%B5%D0%B4%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9%20%D1%81%D0%BB%D0%BE%D0%B2%D0%B0%D1%80%D1%8C',
-		# 'addSignature': r'|dict/agin',
-		# 'paramTitle': '1',
-		# 'paramAuthor': 'автор',
-	# },
-	# # {
-		# # renameTemplateToIzBSE : 'Из БСЭ'
-		# # pagenameFromLink : r'/(?:БСЭ/|%D0%91%D0%A1%D0%AD/|article.xml\?book=bse&title=|dict/bse)(?:/[^]/}]*)?/([^]|/?&}\s\n]+)'
-		# # pagenameFromLink : r'/(?:БСЭ|%D0%91%D0%A1%D0%AD|dict/bse)(?:/[^]/}]*)?/(?:\d+/\d+\.htm\?text=)?([^]/}\s\n]+)'
-		# # pagenameFromLink : r'/(?:БСЭ|%D0%91%D0%A1%D0%AD|dict/bse)(?:/[^]/}]*)?/([^]|/?&}\s\n]+)'  (?:/[^]/}]*)?
-	# # },
-	# ]
+# {
+# 'renameTemplateTo': 'Книга:Городские имена сегодня и вчера|1997|заглавие=',
+# 'urlPartWithPagename': r'Петербургская%20топонимика|%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3%D1%81%D0%BA%D0%B0%D1%8F%20%D1%82%D0%BE%D0%BF%D0%BE%D0%BD%D0%B8%D0%BC%D0%B8%D0%BA%D0%B0',
+# 'addSignature': r'|dict/petertoponim',
+# 'paramTitle': 'заглавие',
+# 'paramAuthor': '',
+# },
+# {
+# 'renameTemplateTo': 'Книга:Энциклопедия «Москва» 1997',
+# 'urlPartWithPagename': r'Энциклопедия%20«Москва»|%D0%AD%D0%BD%D1%86%D0%B8%D0%BA%D0%BB%D0%BE%D0%BF%D0%B5%D0%B4%D0%B8%D1%8F%20%C2%AB%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%C2%BB|Энциклопедия%20%C2%ABМосква%C2%BB',
+# 'addSignature': r'|dict/mos',
+# 'paramTitle': '1',
+# 'paramAuthor': 'автор',
+# },
+# {
+# 'renameTemplateTo': 'Имена московских улиц',
+# 'urlPartWithPagename': r'Московские%20улицы|%D0%9C%D0%BE%D1%81%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B5%20%D1%83%D0%BB%D0%B8%D1%86%D1%8B',
+# 'addSignature': r'|dict/mostoponim',
+# 'paramTitle': '1',
+# 'paramAuthor': 'автор',
+# },
+# {
+# 'renameTemplateTo': 'Из БОЭ',
+# 'urlPartWithPagename': r'Олимпийская%20энциклопедия|%D0%9E%D0%BB%D0%B8%D0%BC%D0%BF%D0%B8%D0%B9%D1%81%D0%BA%D0%B0%D1%8F%20%D1%8D%D0%BD%D1%86%D0%B8%D0%BA%D0%BB%D0%BE%D0%BF%D0%B5%D0%B4%D0%B8%D1%8F',
+# 'addSignature': r'|dict/olympic',
+# 'paramTitle': 'title',
+# 'paramAuthor': 'автор',
+# },
+# {
+# 'renameTemplateTo': 'Революционеры',
+# 'urlPartWithPagename': r'Революционеры|%D0%A0%D0%B5%D0%B2%D0%BE%D0%BB%D1%8E%D1%86%D0%B8%D0%BE%D0%BD%D0%B5%D1%80%D1%8B',
+# 'addSignature': r'|dict/revoluc',
+# 'paramTitle': '1',
+# 'paramAuthor': 'автор',
+# },
+# {
+# 'renameTemplateTo': r'Отечественные певцы 1750-1917',
+# 'urlPartWithPagename': r'Отечественные%20певцы|%D0%9E%D1%82%D0%B5%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B5%20%D0%BF%D0%B5%D0%B2%D1%86%D1%8B',
+# 'addSignature': '',
+# 'paramTitle': '1',
+# 'paramAuthor': 'автор',
+# },
+# # {
+# # renameTemplateTo : 'Кто есть кто в современной культуре‎‎',
+# # 'addSignature': 'dict/who-is-who',
+# # pagenameFromLink : r'/(?:Кто%20есть%20кто%20в%20культуре/|%D0%9A%D1%82%D0%BE%20%D0%B5%D1%81%D1%82%D1%8C%20%D0%BA%D1%82%D0%BE%20%D0%B2%20%D0%BA%D1%83%D0%BB%D1%8C%D1%82%D1%83%D1%80%D0%B5/)([^]|/?&}\n]+)/?',
+# # link2removebase : r'Кто%20есть%20кто%20в%20культуре|%D0%9A%D1%82%D0%BE%20%D0%B5%D1%81%D1%82%D1%8C%20%D0%BA%D1%82%D0%BE%20%D0%B2%20%D0%BA%D1%83%D0%BB%D1%8C%D1%82%D1%83%D1%80%D0%B5|dict/who-is-who',
+# # },
+# {
+# 'renameTemplateTo': r'Вокально-энциклопедический словарь',
+# 'urlPartWithPagename': r'Вокально-энциклопедический%20словарь|%D0%92%D0%BE%D0%BA%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE-%D1%8D%D0%BD%D1%86%D0%B8%D0%BA%D0%BB%D0%BE%D0%BF%D0%B5%D0%B4%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9%20%D1%81%D0%BB%D0%BE%D0%B2%D0%B0%D1%80%D1%8C',
+# 'addSignature': r'|dict/agin',
+# 'paramTitle': '1',
+# 'paramAuthor': 'автор',
+# },
+# # {
+# # renameTemplateToIzBSE : 'Из БСЭ'
+# # pagenameFromLink : r'/(?:БСЭ/|%D0%91%D0%A1%D0%AD/|article.xml\?book=bse&title=|dict/bse)(?:/[^]/}]*)?/([^]|/?&}\s\n]+)'
+# # pagenameFromLink : r'/(?:БСЭ|%D0%91%D0%A1%D0%AD|dict/bse)(?:/[^]/}]*)?/(?:\d+/\d+\.htm\?text=)?([^]/}\s\n]+)'
+# # pagenameFromLink : r'/(?:БСЭ|%D0%91%D0%A1%D0%AD|dict/bse)(?:/[^]/}]*)?/([^]|/?&}\s\n]+)'  (?:/[^]/}]*)?
+# # },
+# ]
 # link2removeSY = r'https?://(?:www\.|m\.)?slovari\.yandex\.ru'
 
 # code = mwparserfromhell.parse(text)
@@ -285,66 +287,66 @@ query = 'SELECT * FROM page LIMIT 10'
 # reBSE = reSymbols + r'\(?["«]*(?:\[\[)?(?:БСЭ|[Бб]ольш(ая|ой) [Сс]оветск(ая|ой) [Ээ]нциклопеди[яи])(?:\]\])?["»]*\)?[.,:;\s›—−-]*'
 # reYS = r'["\'«]?(Яндекс[е]?[.\s]*(?:Словар(?:[еьи]|ях))?|(?:slovari.)?yandex.ru)["\'»]?'
 # reRemoveFromTitles = [
-	# # r'.*',  # внимание: это удаление всего заголовка ссылки, для взятия его из url. только для словарей с именем в url
-	# r'(в )?[Сс]ловар(?:[еьи]|ях)?.*?(?:на )?(?:сайте )?' + reYS,
-	# r'(?:Биография|Данные)? (?:на )?(?:сайте )?' + reYS,
-	# # r'["\'«]?(?:[Яя]ндекс|[Yy]andex)[.\s:-]*(?:[Сс]ловари|[Ss]lovari)["\'»]?',
-	# r'[Сс]ловари',
-	# 'Биография',
-	# r'{{мёртвая ссылка\|число=14\|месяц=06\|год=2016}}',
-	# r'(?:\[\[Пружанский, Аркадий Михайлович\|)?Пружанский\s*А.\s*М.(?:&#93;&#93;)?\s*Отечественные певцы. 1750[\s—−-]+1917: Словарь.[\s—−-]+Изд. 2-е испр. и доп., электронное.[\s—−-]+М., 2008',
-	# # r'(?:В 30 т.)?[—−/ -]*М.: "?Советская энциклопедия"?[,.] 1969[—−/ -]*1978',
-	# # r'(?:в (?:словаре|энциклопедиии|книге|справочнике) )?["«]*Кто есть кто в(?: современной)? культуре["»]*',
-	# r'(?:в\s+(?:словаре|энциклопедии|книге|справочнике)\s*)?["«]*Отечественные певцы["»]*',
-	# r'[\s.]*Эксклюзивные биографии.[\s—−-]+Выпуск 1[\s—−-]+2.[\s—−-]+М.: МК[\s—−-]+Периодика, 2006[\s—−-]+2007\.?',
-	# r'[[\s]*(Агин, Михаил Суренович\|)?Агин М\.\s*С\.[]\s]*(?:&#93;{{мёртвая ссылка\|число=14\|месяц=06\|год=2016}}&#93;)?\s*Вокально-энциклопедический словарь. \(?Биобиблиография\)?. В 5 т.[\s—−-]+М.,\s*1991[\s—−-]+1994\]*',
-	# r'Вокально-энциклопедический словарь(?:, 1991-1994)?',
-	# r'Отечественные певцы(?:[.\s—−-]+2008)?',
-	# r'(?:Энциклопедия|в [Ээ]нциклопедии) ["«]*Москва["»]*',
-	# r'М.: БРЭ, 1997',
-	# r'Петербургская топонимика',
-	# # r'На Яндекс[.:\s]*[Тт]опонимика',
-	# '<!-- Заголовок добавлен ботом -->',
-	# r'^Биография' + reV + reBSE,
-	# r'^Биография$',
-	# r'Электронная версия',
-	# reSymbols + reV + reYS,
-	# r'1969[\s—−-]*1978',
-	# r'\d-е изд(?:\.|ание)?',
-	# reSymbols + reV + reBSE,
-	# r'[Сс]татья' + reV,
-	# reBegin,
-	# reEnd,
-	# ]
+# # r'.*',  # внимание: это удаление всего заголовка ссылки, для взятия его из url. только для словарей с именем в url
+# r'(в )?[Сс]ловар(?:[еьи]|ях)?.*?(?:на )?(?:сайте )?' + reYS,
+# r'(?:Биография|Данные)? (?:на )?(?:сайте )?' + reYS,
+# # r'["\'«]?(?:[Яя]ндекс|[Yy]andex)[.\s:-]*(?:[Сс]ловари|[Ss]lovari)["\'»]?',
+# r'[Сс]ловари',
+# 'Биография',
+# r'{{мёртвая ссылка\|число=14\|месяц=06\|год=2016}}',
+# r'(?:\[\[Пружанский, Аркадий Михайлович\|)?Пружанский\s*А.\s*М.(?:&#93;&#93;)?\s*Отечественные певцы. 1750[\s—−-]+1917: Словарь.[\s—−-]+Изд. 2-е испр. и доп., электронное.[\s—−-]+М., 2008',
+# # r'(?:В 30 т.)?[—−/ -]*М.: "?Советская энциклопедия"?[,.] 1969[—−/ -]*1978',
+# # r'(?:в (?:словаре|энциклопедиии|книге|справочнике) )?["«]*Кто есть кто в(?: современной)? культуре["»]*',
+# r'(?:в\s+(?:словаре|энциклопедии|книге|справочнике)\s*)?["«]*Отечественные певцы["»]*',
+# r'[\s.]*Эксклюзивные биографии.[\s—−-]+Выпуск 1[\s—−-]+2.[\s—−-]+М.: МК[\s—−-]+Периодика, 2006[\s—−-]+2007\.?',
+# r'[[\s]*(Агин, Михаил Суренович\|)?Агин М\.\s*С\.[]\s]*(?:&#93;{{мёртвая ссылка\|число=14\|месяц=06\|год=2016}}&#93;)?\s*Вокально-энциклопедический словарь. \(?Биобиблиография\)?. В 5 т.[\s—−-]+М.,\s*1991[\s—−-]+1994\]*',
+# r'Вокально-энциклопедический словарь(?:, 1991-1994)?',
+# r'Отечественные певцы(?:[.\s—−-]+2008)?',
+# r'(?:Энциклопедия|в [Ээ]нциклопедии) ["«]*Москва["»]*',
+# r'М.: БРЭ, 1997',
+# r'Петербургская топонимика',
+# # r'На Яндекс[.:\s]*[Тт]опонимика',
+# '<!-- Заголовок добавлен ботом -->',
+# r'^Биография' + reV + reBSE,
+# r'^Биография$',
+# r'Электронная версия',
+# reSymbols + reV + reYS,
+# r'1969[\s—−-]*1978',
+# r'\d-е изд(?:\.|ание)?',
+# reSymbols + reV + reBSE,
+# r'[Сс]татья' + reV,
+# reBegin,
+# reEnd,
+# ]
 
 # for dic in dics:
-	# pagenameFromLink = r'/(?:' + dic['urlPartWithPagename'] + r')/([^]|/?&}\n]+)/?'
-	# link2remove_DicSignature = dic['urlPartWithPagename'] + dic['addSignature']
-	# link2remove = link2removeSY + r'/[^|\s]*(' + str(link2remove_DicSignature) + ')'
+# pagenameFromLink = r'/(?:' + dic['urlPartWithPagename'] + r')/([^]|/?&}\n]+)/?'
+# link2remove_DicSignature = dic['urlPartWithPagename'] + dic['addSignature']
+# link2remove = link2removeSY + r'/[^|\s]*(' + str(link2remove_DicSignature) + ')'
 
-	# for template in code.filter_templates():
-		# if template.name.matches(('cite web', 'cite news')) and findLink(template, link2remove):
-			# newtpl = mwparserfromhell.nodes.template.Template(dic['renameTemplateTo'])
-			# if template.has('title'):
-				# title = str(template.get('title').value.strip())
-				# newtpl.add(dic['paramTitle'], title)
-			# if template.has('author') and template.get('author').value != '':
-				# title = str(template.get('author').value.strip())
-				# newtpl.add(dic['paramAuthor'], title)
-			# code.replace(template, str(newtpl))
+# for template in code.filter_templates():
+# if template.name.matches(('cite web', 'cite news')) and findLink(template, link2remove):
+# newtpl = mwparserfromhell.nodes.template.Template(dic['renameTemplateTo'])
+# if template.has('title'):
+# title = str(template.get('title').value.strip())
+# newtpl.add(dic['paramTitle'], title)
+# if template.has('author') and template.get('author').value != '':
+# title = str(template.get('author').value.strip())
+# newtpl.add(dic['paramAuthor'], title)
+# code.replace(template, str(newtpl))
 
-	# for template in code.filter_templates():
-		# if template.name.matches(('книга')) and findLink(template, link2remove):
-			# newtpl = mwparserfromhell.nodes.template.Template(dic['renameTemplateTo'])
-			# if template.has('заглавие'):
-				# title = str(template.get('заглавие').value.strip())
-				# newtpl.add(dic['paramTitle'], title)
-			# if template.has('автор') and template.get('автор').value != '':
-				# title = str(template.get('автор').value.strip())
-				# newtpl.add(dic['paramAuthor'], title)
-			# code.replace(template, str(newtpl))
+# for template in code.filter_templates():
+# if template.name.matches(('книга')) and findLink(template, link2remove):
+# newtpl = mwparserfromhell.nodes.template.Template(dic['renameTemplateTo'])
+# if template.has('заглавие'):
+# title = str(template.get('заглавие').value.strip())
+# newtpl.add(dic['paramTitle'], title)
+# if template.has('автор') and template.get('автор').value != '':
+# title = str(template.get('автор').value.strip())
+# newtpl.add(dic['paramAuthor'], title)
+# code.replace(template, str(newtpl))
 
-	# link2template(code, link2remove, dic['renameTemplateTo'], 'ссылка', dic['paramTitle'], reRemoveFromTitles, pagenameFromLink)
+# link2template(code, link2remove, dic['renameTemplateTo'], 'ссылка', dic['paramTitle'], reRemoveFromTitles, pagenameFromLink)
 
 
 # print(code)
