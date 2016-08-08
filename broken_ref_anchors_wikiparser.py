@@ -1,25 +1,17 @@
-﻿# -*- coding: utf-8  -*-
+# -*- coding: utf-8  -*-
 # coding: utf8
-
-python_version = 3  # для версии 2 отключить эту строку или сменить
-
 # import mwparserfromhell
 # import pywikibot
 # from pywikibot import pagegenerators
 # from my import *
 import requests
-
 # import json
-if python_version == 3:
-	from urllib.parse import urlencode, quote  # python 3
-else:
-	from urllib import urlencode, quote  # python 2.7
-	import codecs
+# from urllib.parse import urlencode, quote  # python 3
+from urllib import urlencode, quote  # python 2.7
 # from urllib.request import urlopen
 # import mwparserfromhell
 from lxml import html
-
-
+import codecs
 # from lxml.etree import fromstring
 # from grab import Grab
 
@@ -32,22 +24,20 @@ category_bad_sfn = '[[Категория:Имеются нерабочие як�
 # 	return mwparserfromhell.parse(text)
 
 # API_URL = "https://ru.wikipedia.org/w/api.php"
+# API_URL = 'https://ru.wikipedia.org/w/index.php'  # wikitext
 API_URL = 'https://ru.wikipedia.org/wiki/'  # html
 # API_URL = 'https://ru.wikipedia.org/api/rest_v1/page/html/'  # cached_html, может быть старой
 headers_ = {'user-agent': 'user:textworkerBot'}
-
-
 def get_page_from_url(title):
+	# data = {"title": title, "action": "raw"}  # wikitext
 	# data = {"title": title, "action": "render"}  # html
 	data = {"action": "render"}  # html
-	if python_version == 3:
-		url = API_URL + quote(title) + '?action=render'  # python 3
-	else:
-		# title = pathname2url(title)  # python 2.7
-		url = API_URL + title.encode('utf-8') + '?action=render'  # python 2.7
+	# url = API_URL + quote(title) + '?action=render'  # python 3
+	# title = pathname2url(title)  # python 2.7
+	url = API_URL + title.encode('utf-8') + '?action=render'  # python 2.7
 	# title = pathname2url(url)  # python 2.7
-	print(url)  # python 2.7
-	# r = urlopen(url).read()  # cached_html  # urlopen берёт в byte-формате, request в str-формате
+	print (url)  # python 2.7
+	# r = urlopen(url).read()  # cached_html
 	## url = urlencode(url, data, quote_via=quote)
 	# return r
 	# ---
@@ -56,19 +46,34 @@ def get_page_from_url(title):
 	return r.text
 
 
-filename = 'sfn0.txt'
-# filename = r"d:\home\scripts.my\4wiki\\" + filename
+def parse(title):
+	# data = {"title": title, "action": "raw"}  # wikitext
+	data = {"title": title, "action": "render"}  # html
+	# r = requests.get(API_URL, urlencode(data, quote_via=quote), headers=headers_)
+	r = requests.get(API_URL + title, headers=headers_)  # cached_html
+	return mwparserfromhell.parse(r.text)
 
-if python_version == 3:
-	arr_listpages = set([line.rstrip() for line in open(filename, encoding='utf-8')])  # python 3
-else:
-	with codecs.open(filename, 'r', encoding='utf-8') as f:  # python 2.7
-		arr_listpages = [line.rstrip() for line in f]  # python 2.7
+
+def NoSfnInRefs(list_sfns, list_refs):
+	for sfn in list_sfns:
+		if sfn in list_refs:
+			continue
+		else:
+			return True
+	return False
+
+# path2listpages = r"d:\home\scripts.my\4wiki\\"
+# filename = path2listpages + r'sfn0.txt'
+filename = 'sfn0.txt'
+
+# arr_listpages = set([line.rstrip() for line in open(filename, encoding='utf-8')])  # python 3
+with codecs.open(filename, 'r', encoding='utf-8') as f:  # python 2.7
+	arr_listpages = [line.rstrip() for line in f]  # python 2.7
+
 # arr_listpages = ['Семёнов, Григорий Михайлович']   # тест отдельных страниц
 
-# list_tpls = (['sfn', 'sfn0'])  # шаблоны
-# list_tpls = (['Вершины Каменного Пояса'])
-
+UseHtmlParsing = True  # парсить html, вместо wikicode
+# list_tpls = (['sfn', 'sfn0'])  # для wikicode
 
 list_pages_with_referrors = set()
 pages_count = len(arr_listpages)
@@ -118,31 +123,51 @@ for title in arr_listpages:
 </body></html>
 """
 
+	# g = Grab()
+	# g.go(API_URL + title)
 	pagecontent = get_page_from_url(title)
 
 	list_sfns = set()
 	list_refs = set()
 
-	parsed_body = html.fromstring(pagecontent)
-	ref_calls = {}
+	if UseHtmlParsing:
+		parsed_body = html.fromstring(pagecontent)
+		ref_calls = {}
+
+		# for ref in parsed_body.xpath('//a[@href=contains(@href,"CITEREF")]/@href'):
 
 
-	# for li in parsed_body.cssselect('li[href*="CITEREF"]'):
-	for eref in parsed_body.cssselect('span.reference-text a[href*="CITEREF"]'):
-		# if e.get('href').find('CITEREF'):    print(';;')
-		href = eref.get('href')
-		pos = href.find('CITEREF')
-		if pos >= 0:
-			cut_href = href[pos:]
-			list_sfns.add(cut_href)
-			# if cut_href not in list_sfns:
-			# ref_calls[href] = eref.text
-			ref_calls[cut_href] = eref.text
+		# g = parsed_body.xpath('//a[@href=contains(@href,"CITEREF")]')
 
-	for ref in parsed_body.xpath('//span[@class="citation"]/@id'):
-		pos = ref.find('CITEREF')
-		if pos >= 0:
-			list_refs.add(ref[pos:])
+		# for ref in g:
+		# 	# print(ref)
+		# 	print(ref.xpath('/@href'))
+
+
+			# for ref in parsed_body.xpath('//a[@href=contains(@href,"CITEREF")]'):
+			# r = ref.xpath('//a/@href')
+			# xpathref = '//a[@href=' + ref + ']'
+			# ref = parsed_body.find(xpathref)
+			# ref_calls.add([ref, parsed_body.xpath('//a[@href=' + ref + ']')])
+			# for i in ref_calls.xpath('//a/@href'):
+
+
+		# for li in parsed_body.cssselect('li[href*="CITEREF"]'):
+		for eref in parsed_body.cssselect('span.reference-text a[href*="CITEREF"]'):
+			# if e.get('href').find('CITEREF'):    print(';;')
+			href = eref.get('href')
+			pos = href.find('CITEREF')
+			if pos >= 0:
+				cut_href = href[pos:]
+				list_sfns.add(cut_href)
+				# if cut_href not in list_sfns:
+				# ref_calls[href] = eref.text
+				ref_calls[cut_href] = eref.text
+
+		for ref in parsed_body.xpath('//span[@class="citation"]/@id'):
+			pos = ref.find('CITEREF')
+			if pos >= 0:
+				list_refs.add(ref[pos:])
 
 		# for undefined_ref in parsed_body.cssselect('li span.mw-ext-cite-error'):
 		# for undefined_ref in parsed_body.cssselect('span.error'):
@@ -152,11 +177,30 @@ for title in arr_listpages:
 		# t = [undefined_ref for undefined_ref in parsed_body.cssselect('li#cite_note-sol5_2_3-35')]
 		# t = [undefined_ref for undefined_ref in parsed_body.xpath('//span/text')]
 		# for undefined_ref in parsed_body.xpath('//span').text:
-		# if 'Ошибка в сносках' in undefined_ref.text
-		#
-		# pos = ref.find('CITEREF')
-		# if pos >= 0:
-		# 	list_refs.add(ref[pos:])
+			# if 'Ошибка в сносках' in undefined_ref.text
+			#
+			# pos = ref.find('CITEREF')
+			# if pos >= 0:
+			# 	list_refs.add(ref[pos:])
+
+
+	else:
+		parsedpage = parse(title)
+
+		for template in parsedpage.filter_templates():
+			if template.has('ref'):
+				refs = [template.get('ref').value.strip()]
+				for year in ['год', 'year']:
+					if template.has(year):
+						refs.append(template.get(year).value.strip())
+				list_refs.add(refs)
+
+			if template.name.matches(list_tpls):
+				if template.has('1'):
+					sfns = [template.get('1').value.strip()]
+					if template.has('2'):
+						sfns.append(template.get('2').value.strip())
+					list_sfns.add(sfns)
 
 	# if list_refs == list_sfns:  continue
 
@@ -169,10 +213,14 @@ for title in arr_listpages:
 		# print('Ошибочные сноски: {}'.format([err_ref for err_ref in err_ref_calls]))
 		# print('Ошибочные сноски err_refs: {}'.format(err_refs))
 		print(u'Ошибочные сноски err_ref_calls: {}'.format([ref_calls.get(k) for k in err_refs]))
-	# for ref in ref_calls:
-	# parsed_body.xpath('//a/@href=' + ref_call)
-	# print('Ошибочные сноски: <a href={}>{}</a>)'.format(ref[0], ref[1]))
-	# print('Ошибочные сноски: {}'.format(ref[1]))
+		# for ref in ref_calls:
+			# parsed_body.xpath('//a/@href=' + ref_call)
+			# print('Ошибочные сноски: <a href={}>{}</a>)'.format(ref[0], ref[1]))
+			# print('Ошибочные сноски: {}'.format(ref[1]))
+
+		# print('Ошибочные сноски ref_calls.keys:')
+		# for k in ref_calls.keys():
+		# 	print(k)
 
 	# print('list_sfns:')
 	# print(list_sfns)
@@ -189,12 +237,117 @@ for title in arr_listpages:
 print('list_pages_with_referrors')
 print(list_pages_with_referrors)
 
-
-# запись списка в файл.
+# запись списка в файл. urlopen берёт в byte-формате, request в str-формате
 filename = 'list_err_pages.txt'
-if python_version == 3:
-	f = open(filename, 'w', encoding='utf-8')  # python 3
-else:
-	f = codecs.open(filename, 'w', encoding='utf-8')  # python 2.7
+# f = open(filename, 'w', encoding='utf-8')  # python 3
+f = codecs.open(filename, 'w', encoding='utf-8')  # python 2.7
+# f = open(filename, 'bw')
 f.writelines("%s\n" % i for i in list_pages_with_referrors)
 f.close()
+
+# print('list_refs:')
+# print(list_refs)
+# print('list_sfns:')
+# print(list_sfns)
+
+# if sfn[0] == ref[0]:
+# 	if sfn[1] == ref[1]:
+# 			continue
+# 	else  continue
+#
+# for template in code.filter_templates():
+# 	arr = []  # list of refs
+# 	if template.has('ref'):
+# 		arr.append(str(template.get('ref').value))
+#
+# 		setarr = set(arr)
+# 		if len(arr) != len(setarr):
+# 			print("Есть одинаковые")
+# 		# else:	print("Все элементы уникальны")
+
+# text = str(code)
+
+
+# print(text)
+
+# tpl = 'Sfn'
+tpl = 'Вершины Каменного Пояса'
+# list = pywikibot.pagegenerators.GeneratorFactory(u'-transcludes:' + tpl)
+# list = str(pagegenerators.GeneratorFactory(u'-transcludes:' + tpl))
+args = (u'-transcludes:' + tpl,)
+# local_args = pywikibot.handle_args(u'-transcludes:Sfn',)
+# list = pagegenerators.GeneratorFactory.handleArg(local_args)
+# gen = pagegenerators.GeneratorFactory()
+# list = gen(u'-transcludes:Sfn').getCombinedGenerator()
+
+# list = pywikibot.pagegenerators.MySQLPageGenerator('SELECT page_namespace, page_title FROM page JOIN templatelinks ON tl_from = page_id WHERE tl_namespace = 10 AND tl_title = "Sfn" AND page_namespace = 0')
+# list = pywikibot.pagegenerators.MySQLPageGenerator('SELECT page_namespace, page_title FROM page LIMIT 10')
+
+query = 'SELECT * FROM page LIMIT 10'
+
+# genFactory = GeneratorFactory()
+# gen = genFactory.getCombinedGenerator()
+
+# list = pywikibot.pagegenerators.MySQLPageGenerator(query)
+# for i in list:
+# print(i)
+
+
+# import os, sys
+# sys.stdout = open("t.txt", 'w')
+# os.system('python c:\pwb\pwb.py listpages.py -ns:0 -transcludes:"{}" -format:3 -lang:ru -family:wikipedia'.format(tpl))
+
+
+# from wmflabs import db
+# conn = db.connect('enwiki')  # You can also use "enwiki_p"
+# # conn is a oursql.connection object.
+# with conn.cursor() as cur:
+# cur.execute(query)  # Or something....
+
+
+
+
+
+# commands = [
+# r'python c:\pwb\pwb.py listpages.py -transcludes:"{tpl}"', tpl,
+# ]
+# for command in commands:
+# os.system(command)
+# for cats in CategoriesToRename:
+# from_ = ' -from:"' + cats[0] + '"'
+# to_ = ' -to:"' + cats[1] + '"'
+# summary_ = ' -summary:"' + summary + '"'
+# run = command + from_ + to_ + summary_  # + ' -simulate'
+# print('echo ' + run)
+# os.system(run)
+
+
+# from wmflabs import db
+# conn = db.connect('enwiki')  # You can also use "enwiki_p"
+# # conn is a oursql.connection object.
+# with conn.cursor() as cur:
+# cur.execute(query)  # Or something....
+
+# return oursql.connect(db=dbname + '_p',
+# host=host,
+# read_default_file=os.path.expanduser("~/replica.my.cnf"),
+# charset=None,
+# use_unicode=False,
+# )
+# host = 'enwiki' + ".labsdb"  # 'localhost'   'ruwiki.labsdb'
+# host = 'tools-login.wmflabs.org'   # 'localhost'   'ruwiki.labsdb'
+# user='vladi2016'  # 'textworkerBot'
+# password = 'goreibeda'
+# # password = 'vladidengi'
+# db = 'ruwiki_p'
+# user='u14134'  # 'textworkerBot'
+# charset='utf8'
+
+# import pymysql
+# import pymysql.cursors
+# conn= pymysql.connect(host,user,password,db,charset,cursorclass=pymysql.cursors.DictCursor)
+# a=conn.cursor()
+# a.execute(query)
+
+
+# print (text)
