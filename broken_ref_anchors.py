@@ -46,7 +46,7 @@ def get_page_from_url(title):
 		# title = pathname2url(title)  # python 2.7
 		url = API_URL + title.encode('utf-8') + '?action=render'  # python 2.7
 	# title = pathname2url(url)  # python 2.7
-	print(url)  # python 2.7
+	# print(url)  # python 2.7
 	# r = urlopen(url).read()  # cached_html  # urlopen берёт в byte-формате, request в str-формате
 	## url = urlencode(url, data, quote_via=quote)
 	# return r
@@ -55,8 +55,8 @@ def get_page_from_url(title):
 	r = requests.get(url, headers=headers_)  # cached_html
 	return r.text
 
-
-filename = 'sfn0.txt'
+# filename = 'sfn0.txt'
+filename = 'sfn1.txt'
 # filename = r"d:\home\scripts.my\4wiki\\" + filename
 
 if python_version == 3:
@@ -69,13 +69,14 @@ else:
 # list_tpls = (['sfn', 'sfn0'])  # шаблоны
 # list_tpls = (['Вершины Каменного Пояса'])
 
+list_pages_with_referrors = {}
 
-list_pages_with_referrors = set()
 pages_count = len(arr_listpages)
-print('Всего {} страниц.'.format(pages_count))
+print('Всего страниц: {}. Внимание Параметры sfn и ref не совпадают:'.format(pages_count))
 
 for title in arr_listpages:
 	pages_count = pages_count - 1
+
 	pagecontent = """<html><body>
 <h2><span class="mw-headline" id=".D0.9B.D0.B8.D1.82.D0.B5.D1.80.D0.B0.D1.82.D1.83.D1.80.D0.B0">Литература</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=%D0%9F%D0%B8%D1%80%D0%B0%D0%B7%D0%B8%D0%B4%D0%BE%D0%BB&amp;action=edit&amp;section=3" title="Редактировать раздел «Литература»">править</a><span class="mw-editsection-bracket">]</span></span></h2>
 <p><span class="citation" id="CITEREF.D0.9C.D0.B0.D1.88.D0.BA.D0.BE.D0.B2.D1.81.D0.BA.D0.B8.D0.B92005"><i><a href="/wiki/%D0%9C%D0%B0%D1%88%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9,_%D0%9C%D0%B8%D1%85%D0%B0%D0%B8%D0%BB_%D0%94%D0%B0%D0%B2%D1%8B%D0%B4%D0%BE%D0%B2%D0%B8%D1%87" title="Машковский, Михаил Давыдович">Машковский М. Д.</a></i> Лекарственные средства.&#160;— 15-е изд.&#160;— <span style="border-bottom:1px dotted gray; cursor:default" title="Москва">М</span>.: Новая Волна, 2005.&#160;— 1200&#160;с.&#160;— <a href="/wiki/%D0%A1%D0%BB%D1%83%D0%B6%D0%B5%D0%B1%D0%BD%D0%B0%D1%8F:%D0%98%D1%81%D1%82%D0%BE%D1%87%D0%BD%D0%B8%D0%BA%D0%B8_%D0%BA%D0%BD%D0%B8%D0%B3/5786402037" class="internal mw-magiclink-isbn">ISBN 5-7864-0203-7</a>.</span></p>
@@ -117,26 +118,20 @@ for title in arr_listpages:
 </ul>
 </body></html>
 """
-
 	pagecontent = get_page_from_url(title)
+	parsed_body = html.fromstring(pagecontent)
 
 	list_sfns = set()
 	list_refs = set()
-
-	parsed_body = html.fromstring(pagecontent)
 	ref_calls = {}
-
 
 	# for li in parsed_body.cssselect('li[href*="CITEREF"]'):
 	for eref in parsed_body.cssselect('span.reference-text a[href*="CITEREF"]'):
-		# if e.get('href').find('CITEREF'):    print(';;')
 		href = eref.get('href')
 		pos = href.find('CITEREF')
 		if pos >= 0:
 			cut_href = href[pos:]
 			list_sfns.add(cut_href)
-			# if cut_href not in list_sfns:
-			# ref_calls[href] = eref.text
 			ref_calls[cut_href] = eref.text
 
 	for ref in parsed_body.xpath('//span[@class="citation"]/@id'):
@@ -158,21 +153,20 @@ for title in arr_listpages:
 		# if pos >= 0:
 		# 	list_refs.add(ref[pos:])
 
-	# if list_refs == list_sfns:  continue
 
-	# if NoSfnInRefs(list_sfns, list_refs):
 	err_refs = list_sfns - list_refs
+
 	if err_refs:
-		list_pages_with_referrors.add(title)
-		print(u'Внимание Параметры sfn и ref не совпадают. Страница № {}: {}'.format(pages_count + 1, title))
-		# print('Ошибочные сноски: {}'.format([err_ref for err_ref in err_refs]))
-		# print('Ошибочные сноски: {}'.format([err_ref for err_ref in err_ref_calls]))
-		# print('Ошибочные сноски err_refs: {}'.format(err_refs))
-		print(u'Ошибочные сноски err_ref_calls: {}'.format([ref_calls.get(k) for k in err_refs]))
+		errrefs = {}
+		for citeref in err_refs:
+			errrefs[citeref] = ref_calls[citeref]
+		list_pages_with_referrors[title] = errrefs
+
+		print(u'Страница № {}: {}'.format(pages_count + 1, title))
+		print(u'Ошибочные сноски list_pages_with_referrors: {}'.format(list_pages_with_referrors[title]))
 	# for ref in ref_calls:
 	# parsed_body.xpath('//a/@href=' + ref_call)
 	# print('Ошибочные сноски: <a href={}>{}</a>)'.format(ref[0], ref[1]))
-	# print('Ошибочные сноски: {}'.format(ref[1]))
 
 	# print('list_sfns:')
 	# print(list_sfns)
@@ -186,15 +180,29 @@ for title in arr_listpages:
 	# f.write(pagecontent)
 	# f.close()
 
-print('list_pages_with_referrors')
-print(list_pages_with_referrors)
+# print('list_pages_with_referrors')
+# print(list_pages_with_referrors)
 
 
-# запись списка в файл.
-filename = 'list_err_pages.txt'
-if python_version == 3:
-	f = open(filename, 'w', encoding='utf-8')  # python 3
-else:
-	f = codecs.open(filename, 'w', encoding='utf-8')  # python 2.7
-f.writelines("%s\n" % i for i in list_pages_with_referrors)
-f.close()
+import add_different_text_2_per_listpages_pwb
+
+
+generator = ["Участник:Vladis13/капица"]
+addText = tpl
+summary = "tpl"
+
+for page in generator:
+	(text, newtext, always) = add_text(page, addText, summary, regexSkip,
+									   regexSkipUrl, always, up, True,
+									   reorderEnabled=reorderEnabled,
+									   create=talkPage)
+
+
+# # запись списка в файл.
+# filename = 'list_err_pages.txt'
+# if python_version == 3:
+# 	f = open(filename, 'w', encoding='utf-8')  # python 3
+# else:
+# 	f = codecs.open(filename, 'w', encoding='utf-8')  # python 2.7
+# f.writelines("%s\n" % i for i in list_pages_with_referrors)
+# f.close()
