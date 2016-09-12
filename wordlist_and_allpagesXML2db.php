@@ -58,6 +58,8 @@ echo 'text file - ok\n';
 
 
 $mysqli = new mysqli('localhost','root','','test') OR DIE("Не могу создать соединение ");
+
+$mysql_init = "SET NAMES 'utf8'; SET CHARACTER SET 'utf8'; SET SESSION collation_connection = 'utf8_general_ci'; SET TIME_ZONE = '+03:00'";
 $mysqli->query($mysql_init);
 
 foreach ($table as $p => $a) {

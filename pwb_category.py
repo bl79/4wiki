@@ -1,38 +1,42 @@
-﻿# from my import *
-import os
+# from my import *
 # from pywikibot import category
+import os
+import vladi_commons
 
 # summary = r"орфография категории [[ВП:ЗКБВ#Средние века|по запросу]]"
-summary = r"категория: [[Википедия:Обсуждение категорий/Июнь 2016#Категория:Персоналии IX века по национальности|по итогу]]"
+summary = r"категория: [[ВП:Обсуждение категорий/Сентябрь 2016#10 сентября 2016]]"
+# summary = r"категория: по основной статье"
+# summary = r"переименование категории: аналогично другим в [[:Категория:Праздники по странам]]"
 
-CategoriesToRename = [
-	# ["Категория:Военные формирования и подразделения средневековья", "Категория:Военные формирования и подразделения Средневековья"],
-	["Категория:Математики и астрономы мусульманского средневековья", "Категория:Математики и астрономы мусульманского Средневековья"],
-	["Категория:Здания и сооружения средних веков", "Категория:Здания и сооружения Средних веков"],
-	["Категория:Мирные договоры средневековья", "Категория:Мирные договоры Средневековья"],
-	["Категория:Незавершённые статьи о средних веках", "Категория:Незавершённые статьи о Средних веках"],
-	["Категория:Мирные договоры средневековья", "Категория:Мирные договоры Средневековья"],
-	["Категория:Раннее средневековье", "Категория:Раннее Средневековье"],
-	["Категория:Римские консулы средневековья", "Категория:Римские консулы Средневековья"],
-	["Категория:Экономика средневековья", "Категория:Экономика Средневековья"]
-]
+# CategoriesToRename = [
+	# ["Категория:Персоналии XVIII века по национальности‎", "Категория:Персоналии XVIII века по странам‎"],
+	# ["Категория:Персоналии XVI века по национальности‎", "Персоналии XVI века по странам‎"],
+# ]
+file_listcat = 'cats2rename.txt'
+CategoriesToRename = vladi_commons.file_readlines_in_list_interlines(file_listcat)
 
+# логин
+run = r'python c:\pwb\pwb.py login.py'
+os.system(run)
 
+# print('echo ' + str(CategoriesToRename))	
+summary_ = ' -summary:"' + summary + '"'
+for cats in CategoriesToRename:	
 
-commands = [
-	r'python c:\pwb\pwb.py movepages.py -pt:0 -noredirect',
-	r'python c:\pwb\pwb.py category.py move -pt:0 -inplace'  # -keepsortkey
-]
+	# переименование страницы
+	command = r'python c:\pwb\pwb.py movepages.py -pt:0 -noredirect'
+	from_ = ' -from:"' + cats[0] + '"'
+	to_ = ' -to:"' + cats[1] + '"'
+	run = command + from_ + to_ + summary_  # + ' -simulate'	
+	print('echo ' + run)		
+	os.system(run)	
 
-for command in commands:
-	for cats in CategoriesToRename:
-		from_ = ' -from:"' + cats[0] + '"'
-		to_ = ' -to:"' + cats[1] + '"'
-		summary_ = ' -summary:"' + summary + '"'
-		run = command + from_ + to_ + summary_  # + ' -simulate'
-		print('echo ' + run)
-		os.system(run)
-
-
-# python pwb.py movepages.my -noredirect -from:"Категория:Бастиды средневековья" -to:"Категория:Бастиды Средневековья" -summary:"в категории 'средневековье' → 'Средневековье' [[ВП:ЗКБВ#Средние века|по запросу]]"
-# python pwb.py category.py move -inplace -from:"Категория:Бастиды средневековья" -to:"Категория:Бастиды Средневековья" -summary:"в категории 'средневековье' → 'Средневековье' [[ВП:ЗКБВ#Средние века|по запросу]]"
+	# переименование категорий
+	command = r'python c:\pwb\pwb.py category.py move -pt:0 -inplace'  # -keepsortkey
+	from_ = ' -from:"' + cats[0] + '"'
+	to_ = ' -to:"' + cats[1] + '"'	
+	run = command + from_ + to_ + summary_  # + ' -simulate'	
+	# run += ' -batch'
+	print('echo ' + run)		
+	os.system(run)
+	
