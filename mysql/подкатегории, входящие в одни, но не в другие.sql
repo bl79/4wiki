@@ -15,7 +15,6 @@ AND page.page_title IN (SELECT
   AND page.page_title LIKE 'Родившиеся_%'
   AND categorylinks.cl_to LIKE 'Персоналии:%')
 
--- d
 AND page.page_title NOT IN (SELECT
     page.page_title
   FROM page
