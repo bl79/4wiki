@@ -1,9 +1,12 @@
-REM Для запуска скрипта из AWB
+REM Р”Р»СЏ Р·Р°РїСѓСЃРєР° СЃРєСЂРёРїС‚Р° РёР· AWB
+REM D:\home\scripts.my\4wiki\AWBscriptRun.vbs
+REM D:/home/scripts.my/4wiki/awb_regexp_replacing_onpage.py
 set WshShell = WScript.CreateObject("WScript.Shell")
 set WshArguments=WScript.Arguments
-WshShell.CurrentDirectory = "d:\home\scripts.my\"
+WshShell.CurrentDirectory = "D:/home/scripts.my/4wiki"
 REM command = "c:\Python35\python.exe ParserTempates_SlovariYandex.py"
-command = "c:\Python35\python.exe ParserTempates_SlovariYandex.py"
+REM command = "c:\Python35\python.exe ParserTempates_SlovariYandex.py"
+command = "python awb_regexp_replacing_onpage_tsd-wordlists.py"
 if WshArguments.count()=0 then
 	'c:\Python35\python.exe c:\Python35\ParserTempates_SlovariYandex.py
 	WshShell.Run command,0,true
@@ -17,14 +20,14 @@ REM Dim WshArguments, i, list
  
 REM list=""
  
-REM 'Получаем доступ к коллекции через свойство Arguments
+REM 'РџРѕР»СѓС‡Р°РµРј РґРѕСЃС‚СѓРї Рє РєРѕР»Р»РµРєС†РёРё С‡РµСЂРµР· СЃРІРѕР№СЃС‚РІРѕ Arguments
 REM set WshArguments=WScript.Arguments
  
-REM 'Определяем, есть ли передача параметров
+REM 'РћРїСЂРµРґРµР»СЏРµРј, РµСЃС‚СЊ Р»Рё РїРµСЂРµРґР°С‡Р° РїР°СЂР°РјРµС‚СЂРѕРІ
 REM if WshArguments.count()=0 then
-    REM MsgBox "Передайте сценарию аргументы"
+    REM MsgBox "РџРµСЂРµРґР°Р№С‚Рµ СЃС†РµРЅР°СЂРёСЋ Р°СЂРіСѓРјРµРЅС‚С‹"
 REM else
-    REM ' Производим перебор коллекции
+    REM ' РџСЂРѕРёР·РІРѕРґРёРј РїРµСЂРµР±РѕСЂ РєРѕР»Р»РµРєС†РёРё
     REM for i=0 to WshArguments.Count-1
         REM list = list & WshArguments(0) & vbCrLf
     REM next
