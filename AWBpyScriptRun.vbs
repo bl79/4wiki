@@ -1,12 +1,12 @@
 REM Для запуска скрипта из AWB
 REM D:\home\scripts.my\4wiki\AWBscriptRun.vbs
-REM D:/home/scripts.my/4wiki/awb_regexp_replacing_onpage.py
 set WshShell = WScript.CreateObject("WScript.Shell")
 set WshArguments=WScript.Arguments
 WshShell.CurrentDirectory = "D:/home/scripts.my/4wiki"
 REM command = "c:\Python35\python.exe ParserTempates_SlovariYandex.py"
 REM command = "c:\Python35\python.exe ParserTempates_SlovariYandex.py"
-command = "python awb_regexp_replacing_onpage_tsd-wordlists.py"
+REM command = "python awb_regexp_replacing_onpage_tsd-wordlists.py"   
+command = "python d:/home/scripts.my/4wiki/awb_regexp_replacing_onpage.py"
 if WshArguments.count()=0 then
 	'c:\Python35\python.exe c:\Python35\ParserTempates_SlovariYandex.py
 	WshShell.Run command,0,true
