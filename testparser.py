@@ -2,7 +2,7 @@
 import mwparserfromhell
 import pywikibot
 
-# file = r'd:\home\scripts.my\wiki-xml'
+# file = r'd:\scripts.my\wiki-xml'
 
 text = u''' эстрадного или циркового {{nobr|uu=6|r}}представления, [[фильм]]а<ref name="encycl">{{статья
  |автор         = Рудницкий К. Л. 

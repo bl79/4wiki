@@ -180,5 +180,5 @@ class sqla:
 		'Harvard citation no brackets', 'Harvnb', 'Harvsp',
 		'Harvcol', 'Harvcoltxt', 'Harvcolnb', 'Harvrefcol',
 	])
-	tpls = vladi_commons.str2list(warning_tpl_name) + vladi_commons.str2list(names_sfn_templates)
+	tpls = vladi_commons.type_str2list(warning_tpl_name) + vladi_commons.type_str2list(names_sfn_templates)
 	print(tpls)

@@ -82,7 +82,7 @@ htm = """
 </div>
 """
 
-html_parsed = etree.HTML(htm)
+html_parsed = etree..HTML(htm)
 # html_parsed = etree.fromstring(htm)
 
 import re
