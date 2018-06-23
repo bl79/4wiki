@@ -7,8 +7,6 @@ import mwparserfromhell as mwp
 import requests
 from urllib.parse import urlparse, parse_qs, parse_qsl, unquote, quote
 from lxml.html import fromstring
-# import vladi_commons.vladi_commons
-# from vladi_commons import vladi_commons
 from vladi_commons.vladi_helpers import csv_read_dict, csv_save_dict, json_store_to_file, json_data_from_file, \
     file_readtext, listdic_pop, file_readlines, lines2list, file_savelines
 import vladi_commons.lib_for_mwparserfromhell
