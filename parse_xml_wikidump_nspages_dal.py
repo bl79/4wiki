@@ -3,20 +3,10 @@ from lxml import etree
 from io import StringIO
 # !/usr/bin/env python
 # coding: utf-8
-import requests
-from urllib.parse import urlencode, quote
-# import vladi_commons
-# from vladi_commons import vladi_commons
-from vladi_commons.vladi_helpers import csv_read_dict, csv_save_dict, json_store_to_file, json_data_from_file, \
-    file_readtext, listdic_pop, csv_save, file_savelines, read_list_interlines
-import sqlite3
-import json
-from lxml.html import fromstring
-import lxml.html
-import re
+from vladi_commons.vladi_helpers import listdic_pop
+from vladi_commons.file_helpers import file_savelines, read_list_interlines
 # import html5lib
-from urllib.parse import urlparse, parse_qs, parse_qsl, unquote, quote
-from wikiclass import WikiMethods
+from my_wikiclass.wikiclass import WikiMethods
 from toDO.toDO import ToDO
 
 # Путь к файлу wikidump
@@ -33,12 +23,8 @@ def parseBookXML(xmlFile):
     root = etree.fromstring(xml)
     # root = etree.parse('path_to_file')
 
-    from xml.etree import ElementTree as EET
-
     parser = etree.XMLParser(ns_clean=True)
     tree = etree.parse(StringIO(xml), parser)
-
-    from xml.etree import ElementTree
 
     # namespaces
     NS_MAIN = 2
@@ -68,8 +54,7 @@ def parseBookXML(xmlFile):
 
 
 import re
-from pywikibot import output, xmlreader
-from urllib.parse import urlparse, parse_qs, parse_qsl, unquote, quote
+from pywikibot import xmlreader
 
 # namespaces
 NS_MAIN = 2

@@ -7,8 +7,8 @@ from lxml.html import fromstring, tostring
 from lxml import cssselect
 import re
 # import mwparserfromhell
-# import pywikibot
-import vladi_commons
+import pywikibot
+from vladi_commons.file_helpers import file_savetext, file_readtext
 
 text2upload = 'pages_to_bot_upload.csv'
 csvrows = []
@@ -38,7 +38,7 @@ class openwikipage:
 		self.page.save(edit_comment)
 
 	def save2file(self):
-		vladi_commons.file_savetext(wikipages_filename, text)
+		file_savetext(wikipages_filename, text)
 
 
 # article_page = openwikipage(project, book, subpagename)
@@ -274,7 +274,7 @@ for v in volumes_from_file:
 		# section_name = page[2] if page[2] else subpagename
 
 		file_path = path + str(v['filename']) + '.parsed' + '.html'
-		text_source = vladi_commons.file_readtext(file_path)
+		text_source = file_readtext(file_path)
 		text = text_source
 
 		# text = re.sub('<span class="opdelimiter">([^<>]*)</span>', r'\1', text)

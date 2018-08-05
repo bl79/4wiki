@@ -5,7 +5,7 @@
 #
 import re
 import pywikibot
-from vladi_commons.vladi_helpers import file_readtext, file_savetext
+from vladi_commons.file_helpers import file_readtext, file_savetext
 
 
 class zalivka_from_wikipage():

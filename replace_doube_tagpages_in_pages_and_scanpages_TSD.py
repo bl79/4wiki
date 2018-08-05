@@ -27,7 +27,7 @@ import re
 import vladi_commons
 import pywikibot
 import mwparserfromhell as mwp
-from wikiclass import WikiMethods
+from my_wikiclass.wikiclass import WikiMethods
 
 
 class wiki(WikiMethods):

@@ -8,7 +8,7 @@ from lxml import cssselect
 import re
 # import mwparserfromhell
 # import pywikibot
-import vladi_commons
+from vladi_commons.file_helpers import file_readtext, file_savetext
 
 text2upload = 'pages_to_bot_upload.csv'
 csvrows = []
@@ -268,7 +268,7 @@ for i in range(1, 92):
 	# section_name = page[2] if page[2] else subpagename
 	# i=2
 	file_path = path + str(i) + '.html'
-	text_source = vladi_commons.file_readtext(file_path)
+	text_source = file_readtext(file_path)
 	text = text_source
 
 	# text = re.search(r'<a href="#(.+?)".*?"note">', text).groups()
@@ -489,7 +489,7 @@ for i in range(1, 92):
 
 
 	file_path = path + 'parsed/' + str(i) + '.parsed' + '.html'
-	vladi_commons.file_savetext(file_path, text)
+	file_savetext(file_path, text)
 
 	pass
 #

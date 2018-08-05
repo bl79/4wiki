@@ -3,10 +3,7 @@ import re
 import vladi_commons
 from lib_for_mwparserfromhell import listtpls
 import pywikibot
-import mwparserfromhell as mwp
-import sqlite3
-from collections import namedtuple
-from wikiclass import WikiMethods
+from my_wikiclass.wikiclass import WikiMethods
 
 
 class wiki(WikiMethods):
