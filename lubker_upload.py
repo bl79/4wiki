@@ -5,7 +5,7 @@ import csv
 from unidecode import unidecode
 import unicodedata
 import w3lib.html
-import vladi_commons
+from vladi_commons.file_helpers import json_store_to_file, json_data_from_file, file_savelines
 
 CSV_FILE = '/home/vladislav/workspace/temp/lubker/lubker-original.csv'
 CSV_OUTFILE = '/home/vladislav/workspace/temp/lubker/lubker_clean.csv'
@@ -405,10 +405,10 @@ def make_wikipage(filename, dic, title1='title', title2='title_original', text='
 		wiki_articles_list.append(unicodedata.normalize('NFC', p))
 	lst = list(chunks(wiki_articles_list, parts2separate))
 	for part in lst:
-		vladi_commons.file_savelines(filename + str(lst.index(part)), part)
+		file_savelines(filename + str(lst.index(part)), part)
 
 
-dic = vladi_commons.json_data_from_file(JSON_FILE)
+dic = json_data_from_file(JSON_FILE)
 # re.compile()
 # for i in textovka_dic:
 # 	i['text'] = re.subi['text']
@@ -416,7 +416,7 @@ dic = vladi_commons.json_data_from_file(JSON_FILE)
 # dic = make_titles_original(textovka_dic)
 dic = clean_csv_ancientrome(dic)
 dic = make_wordlist_textovka(dic)
-vladi_commons.json_store_to_file(JSON_FILE + '3', dic)
+json_store_to_file(JSON_FILE + '3', dic)
 
 WIKI_OUTFILE = '/home/vladislav/workspace/temp/lubker/lubker.wiki'
 make_wikipage(WIKI_OUTFILE, dic, parts2separate=5)
