@@ -21,24 +21,35 @@ class Parse_to_wiki:
     re_tag_b = re.compile('</?b>')
     re_tag_emphasis = re.compile('</?emphasis>')
     re_tag_p = re.compile(r'<p>\s*(.*?)\s*</p>', flags=re.DOTALL)
+    re_tag_subtitle = re.compile('<subtitle>\s*(.*?)\s*</subtitle>')
 
     # чистка пробелов и абзацев
     re_tag_clean_emptylines = re.compile(r'^\s+$', flags=re.MULTILINE)
     re_tag_clean_spaces = re.compile(r' {2,}')
     re_tag_clean_newlines = re.compile(r'\n{2,}')
+    re_spaces_on_strbegin = re.compile(r'^ +', flags=re.MULTILINE)
 
     def parseFB2XMLasText(self, xml: str):
         section = self.re_get_section.search(xml)
         if not section:
             return
         text = section.group(1)
+        text = text.replace('<empty-line/>', '')
+        if text == '':
+            return ''
 
         # теги p, b, emphasis
         text = self.re_tag_b.sub("'''", text)
         text = self.re_tag_emphasis.sub("''", text)
+        text = self.re_tag_subtitle.sub(r"{{центр|\1|рш=200%}}\n", text)
         text = self.re_tag_p.sub(r'\1\n\n', text)
 
+        # нормализация пунктуации
+        text = text.replace('—', ' — ')
+        text = text.replace(' ,', ',')
+
         # чистка пробелов и абзацев
+        text = self.re_spaces_on_strbegin.sub(r'', text)
         text = self.re_tag_clean_emptylines.sub(r'', text)
         text = self.re_tag_clean_spaces.sub(r' ', text)
         text = self.re_tag_clean_newlines.sub(r'\n\n', text)

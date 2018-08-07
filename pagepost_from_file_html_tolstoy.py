@@ -1295,29 +1295,13 @@ volumes = [
     # },
 ]
 
-# macros_pwb_post = """\
-# {{-stop-}}
-# {{-start-}}
-# '''%s/%s'''
-# """
-
-macros_pwb_post = """\
-{{-start-}}
-'''%s/%s'''
-%s
-{{-stop-}}
-"""
-
-
-def pagenum_to_scanpagenum(pagenum, offset):
-    scanpagenum = str(int(pagenum) + offset)
-    return scanpagenum
-
 
 if __name__ == '__main__':
 
     bookpagenum_re_text = r'^id="(.+?)".*?/pagenumber>\s*'
     bookpagenum_re = re.compile(bookpagenum_re_text)
+
+    mkindexpage = FormatText_to_WikiIndexPage()
 
     for v in volumes_from_file:
         # if len(v['wordlist']) == 0: continue
@@ -1368,10 +1352,10 @@ if __name__ == '__main__':
                     for offset in v['page_scan_offset']:
                         offset_pn_from, offset_pn_to, page_scan_offset = offset[0], offset[1], offset[2]
                         if book_pn >= offset_pn_from and book_pn <= offset_pn_to:
-                            scan_pn = pagenum_to_scanpagenum(book_pn, page_scan_offset)
+                            scan_pn = mkindexpage.pagenum_to_scanpagenum(book_pn, page_scan_offset)
                             break
                     p = {'numbookpage': book_pn, 'numindexpage': scan_pn,
-                         'colontitul': FormatText_to_WikiIndexPage.make_colontitul(book_pn, subpagename)}
+                         'colontitul': mkindexpage.make_colontitul(book_pn, subpagename)}
 
                 elif re.match('^[IVXCL]+$', book_pn, flags=re.IGNORECASE):
                     book_pn = int(roman.fromRoman(book_pn))
@@ -1379,9 +1363,9 @@ if __name__ == '__main__':
                     ro = v['roman_offset']
                     offset_pn_from, offset_pn_to, page_scan_offset = ro[0], ro[1], ro[2]
                     if book_pn >= offset_pn_from and book_pn <= offset_pn_to:
-                        scan_pn = pagenum_to_scanpagenum(book_pn, page_scan_offset)
+                        scan_pn = mkindexpage.pagenum_to_scanpagenum(book_pn, page_scan_offset)
                     p = {'numbookpage': book_pn, 'numindexpage': scan_pn,
-                         'colontitul': FormatText_to_WikiIndexPage.make_colontitul(roman.toRoman(book_pn), subpagename)}
+                         'colontitul': mkindexpage.make_colontitul(roman.toRoman(book_pn), subpagename)}
 
             # try:
             # 	book_pn = int(bookpagenum_re.match(textpage).group(1))
@@ -1445,14 +1429,12 @@ if __name__ == '__main__':
         for t in volume_text_pages:
             section_text, book_pn, scan_pn, colontitul = t['text'], t['numbookpage'], t['numindexpage'], t['colontitul']
 
-            # scan_page_name = 'Страница:' + index + str(scan_pn) + '.jpg'
-
-            scan_page_name = 'Страница:' + index + '/' + str(scan_pn)
+            scan_page_name = mkindexpage.scan_page_name(index, scan_pn)
             # scan_page = pywikibot.Page(site, scan_page_name)
             subpagename = ''
 
-            scanpagetext = FormatText_to_WikiIndexPage.make_pagetext(section_text, subpagename, colontitul, header='',
-                                                                     footer='', colontitul_up=False)
+            section_text = mkindexpage.wrap_to_section_tag(section_text, subpagename)
+            scanpagetext = mkindexpage.make_pagetext(section_text, colontitul, colontitul_on_top=False)
 
             # scan_page.text = scanpagetext
             # csvrows.append([scan_page_name, str(page_pn), subpagename, section_name, colontitul, section_text])
@@ -1460,7 +1442,7 @@ if __name__ == '__main__':
             # page_pn += 2
             # pass
 
-            textpage_topost = macros_pwb_post % ('Страница:' + index % volume_num, str(scan_pn), scanpagetext)
+            textpage_topost = mkindexpage.make_pwb_page()macros_pwb_post % ('Страница:' + index % volume_num, str(scan_pn), scanpagetext)
             volume_text_to_post_pwb.append(textpage_topost)
 
         file_savetext(path + 'topost/' + str(v['filename']) + '.parsed.txt',
