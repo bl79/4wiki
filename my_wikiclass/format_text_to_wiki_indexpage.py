@@ -7,28 +7,35 @@ import re
 from pywikibot import xmlreader
 from vladi_commons.file_helpers import file_readtext, filepaths_of_directory
 from my_wikiclass.parse_to_wiki import Parse_to_wiki
+from my_wikiclass.deyatificator import deyatificator
 import roman
 
 
 class FormatText_to_WikiIndexPage:
 
     def formatting_output_page(self, page, range_pages_metric, colontitul_center_only=False, wrap_to_VARtpl=False,
-                               do_precorrection=True):
+                               deyatification=False, do_precorrection=True, colontitul_on_top=True):
         text = page.parsed_text
         # section_text = mkindexpage.wrap_to_section_tag(page.parsed_text, subpagename)
+
         if do_precorrection:
             text = self.precorrection(text)
+
+        # Конвертировать текст в современную орфографию
+        page.neworph_text = deyatificator(text) if deyatification else ''
+
         if wrap_to_VARtpl:
-            text = self.wrap_to_VARtpl(text)
-        book_pn = self.calc_bookpagenum_by_scanpagenum(page.scanpagenum, range_pages_metric)
+            text = self.wrap_to_VARtpl(text, page.neworph_text)
+        book_pn, is_roman = self.calc_bookpagenum_by_scanpagenum(page.scanpagenum, range_pages_metric)
 
         if colontitul_center_only:
-            colontitul = self.make_colontitul_center_only(book_pn) if book_pn else ''
+            colontitul = self.make_colontitul_center_only(book_pn, is_roman) if book_pn else ''
         else:
             # todo ? range_pages_metric.subpagename
-            colontitul = self.make_colontitul(roman.toRoman(book_pn), range_pages_metric.subpagename)
+            subpagename = ''
+            colontitul = self.make_colontitul(book_pn, is_roman, subpagename)
 
-        scanpagetext = self.make_pagetext(text, colontitul, colontitul_on_top=True)
+        scanpagetext = self.make_pagetext(text, colontitul, colontitul_on_top=colontitul_on_top)
         return scanpagetext
 
     @staticmethod
@@ -51,11 +58,16 @@ class FormatText_to_WikiIndexPage:
         return scanpagetext
 
     @staticmethod
-    def make_colontitul(book_pn, subpagename=''):
+    def make_colontitul(book_pn, subpagename='', is_roman=False):
 
         def label_interpages(number: int, string_chet: str, str_nechet: str) -> str:
             """Возвращает строку в зависимости чётная ли страница"""
             return str(string_chet) if not number % 2 else str(str_nechet)
+
+        colontitul = ''
+        colontitul_center = ''
+        colontitul_left = ''
+        colontitul_right = ''
 
         # colontitul = 'Народная Русь' if not scan_pn % 2 else subpagename  # чередующийся на чётных/нечётных страницах
         # colontitul = (colontitul + '.').upper()  # в верхнем регистре с точкой
@@ -65,7 +77,6 @@ class FormatText_to_WikiIndexPage:
         # colontitul = ''
         first_pages_without_colontitul = True  # на первых страницах без колонтитула
 
-        colontitul_center = subpagename.upper()
         # colontitul_center = colontitul_center.replace(' (ПЛАТОН/КАРПОВ)', '').replace(' (ПСЕВДО-ПЛАТОН/КАРПОВ)', '').replace('КАРПОВ В. Н., ', '').replace('ПОЛИТИКА ИЛИ ГОСУДАРСТВО. ','')
         # if re.search(r'[цкнгшщзхфвпрлджчсмтбѳ]$', colontitul_center, re.I):
         # colontitul_center = colontitul_center + 'ъ'
@@ -79,22 +90,32 @@ class FormatText_to_WikiIndexPage:
         # colontitul_center = 'ПРЕДИСЛОВІЕ'
         colontitul_center = colontitul_center.upper()
         # colontitul_center = colontitul_center + '.'
-        colontitul_center = ''
+
         # colontitul_center = label_interpages(page_pn, (subpagename + '.').upper().replace(' ВВЕДЕНИЕ (КАРПОВ).', ''), '')
         # if colontitul_center == '':  colontitul_center = 'ВВЕДЕНІЕ.'
 
-        book_pn_int = book_pn
-        try:
-            if not re.match('^\d+$', str(book_pn)):
-                book_pn_int = roman.fromRoman(book_pn)
-        except:
-            pass
+        if book_pn != '':
+            book_pn_int = book_pn
+            try:
+                if not re.match('^\d+$', str(book_pn)):
+                    book_pn_int = roman.fromRoman(book_pn)
+            except:
+                pass
 
-        colontitul_left = label_interpages(book_pn_int, book_pn, '')
-        colontitul_right = label_interpages(book_pn_int, '', book_pn)
-        # римские цифры
-        # label_interpages(book_pn, roman.toRoman(book_pn+32), ''),	colontitul_center, label_interpages(book_pn, '', roman.toRoman(book_pn+32))
-        # '',	'— ' + str(book_pn) + ' —',	''
+            colontitul_left = label_interpages(book_pn_int, book_pn, '')
+            colontitul_right = label_interpages(book_pn_int, '', book_pn)
+            # римские цифры
+            # label_interpages(book_pn, roman.toRoman(book_pn+32), ''),	colontitul_center, label_interpages(book_pn, '', roman.toRoman(book_pn+32))
+            # '',	'— ' + str(book_pn) + ' —',	''
+
+        if colontitul_center == colontitul_left == colontitul_right == '':
+            return ''
+
+        if is_roman:
+            # todo: toRoman need int
+            colontitul_center = roman.toRoman(colontitul_center)
+            colontitul_left = roman.toRoman(colontitul_left)
+            colontitul_right = roman.toRoman(colontitul_right)
 
         colontitul = f'{{{{колонтитул|{colontitul_left}|{colontitul_center}|{colontitul_right}}}}}'
 
@@ -105,7 +126,9 @@ class FormatText_to_WikiIndexPage:
         return colontitul
 
     @staticmethod
-    def make_colontitul_center_only(string):
+    def make_colontitul_center_only(string, is_roman=False):
+        if is_roman:
+            string = roman.toRoman(int(string))
         colontitul = f'{{{{колонтитул||{str(string)}|}}}}'
         return colontitul
 
@@ -114,9 +137,8 @@ class FormatText_to_WikiIndexPage:
         return f'<section begin="{sectionname}" />{text}<section end="{sectionname}" />'
 
     @staticmethod
-    def wrap_to_VARtpl(text=''):
-        text = text.strip()
-        return f'{{{{ВАР\n|{text}\n|{text}}}}}'
+    def wrap_to_VARtpl(text_oldorph='', text_neworph=''):
+        return '{{ВАР\n|%s\n|%s}}' % (text_oldorph, text_neworph)
 
     @staticmethod
     def make_pwb_page(pagename, pagetext):
@@ -129,7 +151,29 @@ class FormatText_to_WikiIndexPage:
     @staticmethod
     def precorrection(text):
         text = re.sub('(\w+)-$', r'{{перенос|\1|}}', text, flags=re.MULTILINE)
+        text = text.replace('&apos;', "'")
+        text = re.sub('([„”«»]|&quot;)', '"', text)
+
+        text = text.replace('</ref>\)', '</ref>')
+
         return text
+
+    @staticmethod
+    def perenos_slov(pages: list):
+        """Расстановка шаблона {{перенос}} на страницы со словом, и {{перенос2}} на след. страницы"""
+        re_perenos_start = re.compile('(\w+)-$')
+        re_perenos_second = re.compile('^(\w+)')
+        for i, p in enumerate(pages):
+            perenos_begin_re = re_perenos_start.search(p.parsed_text)
+            if perenos_begin_re:
+                perenos_begin = perenos_begin_re.group(1)
+                text_next_page = pages[i + 1].parsed_text
+                perenos_end_re = re_perenos_second.search(text_next_page)
+                perenos_end = perenos_end_re.group(1) if perenos_end_re else ''
+                p.parsed_text = re_perenos_start.sub(r'{{перенос|%s|%s}}' % (perenos_begin, perenos_end), p.parsed_text)
+                text_next_page = re_perenos_second.sub(r'{{перенос2|%s|%s}}' % (perenos_begin, perenos_end),
+                                                       text_next_page)
+                pages[i + 1].parsed_text = text_next_page
 
     @staticmethod
     def scan_page_name(workpagename: str, scan_pn, volume_num=None):
@@ -163,9 +207,10 @@ class FormatText_to_WikiIndexPage:
     def calc_bookpagenum_by_scanpagenum(scan_pn, range_pages_metric: list):
         scan_pn = int(scan_pn)
         book_pn = ''
+        is_roman = False
         for rangemetric in range_pages_metric:
-            offset, start, end = rangemetric
+            offset, start, end, is_roman = rangemetric
             if start <= scan_pn <= end:
                 book_pn = scan_pn + offset
                 break
-        return book_pn
+        return book_pn, is_roman

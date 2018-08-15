@@ -15,7 +15,8 @@ from vladi_commons.file_helpers import file_savetext, file_readtext, filepaths_o
 
 
 class Parse_to_wiki:
-    re_get_section = re.compile('<section>\s*(.*?)\s*</section>', flags=re.DOTALL)
+    re_get_section = re.compile('<section[^>]*?>\s*(.*?)\s*</section>', flags=re.DOTALL)
+    re_get_section_cite = re.compile('<section id=(".*?")>\s*(.*?)\s*</section>', flags=re.DOTALL)
 
     # теги p, b, emphasis
     re_tag_b = re.compile('</?b>')
@@ -29,11 +30,34 @@ class Parse_to_wiki:
     re_tag_clean_newlines = re.compile(r'\n{2,}')
     re_spaces_on_strbegin = re.compile(r'^ +', flags=re.MULTILINE)
 
+    # сноски
+    re_ref_from_footnotes_to_text = re.compile(r'<ref name="#(bookmark\d+)" */>(.*?)(<ref name="\1" *>.*?</ref>)',
+                                               flags=re.DOTALL)
+
     def parseFB2XMLasText(self, xml: str):
-        section = self.re_get_section.search(xml)
-        if not section:
+        xml = self.re_get_section_cite.sub(r'<section id=\1><ref name=\1>\2</ref></section>', xml)
+        sections = self.re_get_section.findall(xml)
+        if not sections:
             return
-        text = section.group(1)
+        text = '\n'.join(sections)
+
+        text = self.re_tag_p.sub(r'\1\n\n', text)
+
+        # сноски
+        text = re.sub('<a l:href=("#bookmark\d+") type="note"><sup>\d</sup></a>', r'<ref name=\1 />', text)
+        text = text.replace('a l:href', 'ref name').replace(' type="note"', '')
+        text = re.sub('(<ref name="bookmark\d+">)\s*<title>\s*(<p>[\s*\d]+</p>|[\s*\d]+)?\s*</title>\s*', r'\1', text,
+                      flags=re.DOTALL)
+        text = re.sub('(<ref.*?>)\s*<p>\s*(.*?)\s*</p>\s*(</ref>)', r'\1\2\3', text, flags=re.DOTALL)
+        text = re.sub('(<ref.*?>)\s*(.*?)\s*(</ref>)', r'\1\2\3', text, flags=re.DOTALL)
+        text = re.sub(r'<sup>\s*(<ref[^>]*?/>)\s*</sup>', r'\1', text, flags=re.DOTALL)
+        text = text.replace('<sup></sup>', '')
+        for i in range(20):
+            text = self.re_ref_from_footnotes_to_text.sub(r'\3\2', text)
+        text = re.sub(r'<ref name="(bookmark\d+)" *>', r'<ref>', text)
+        text = re.sub('<p>\) *', r'<p>', text)
+        text = re.sub('(<ref.*?>)\) *', r'\1', text)
+
         text = text.replace('<empty-line/>', '')
         if text == '':
             return ''
@@ -42,7 +66,6 @@ class Parse_to_wiki:
         text = self.re_tag_b.sub("'''", text)
         text = self.re_tag_emphasis.sub("''", text)
         text = self.re_tag_subtitle.sub(r"{{центр|\1|рш=200%}}\n", text)
-        text = self.re_tag_p.sub(r'\1\n\n', text)
 
         # нормализация пунктуации
         text = text.replace('—', ' — ')
