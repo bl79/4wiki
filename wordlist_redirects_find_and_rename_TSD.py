@@ -3,7 +3,7 @@ import re
 import vladi_commons
 from lib_for_mwparserfromhell import listtpls
 import pywikibot
-from my_wikiclass.wikiclass import WikiMethods
+from my_wikisource_class.wikiclass import WikiMethods
 
 
 class wiki(WikiMethods):

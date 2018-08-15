@@ -10,7 +10,7 @@ import re
 import pywikibot
 import roman
 from vladi_commons.file_helpers import file_savetext, file_readtext
-from my_wikiclass.format_text_to_wiki_indexpage import FormatText_to_WikiIndexPage
+from my_wikisource_class.format_text_to_wiki_indexpage import FormatText_to_WikiIndexPage
 
 text2upload = 'pages_to_bot_upload.csv'
 csvrows = []

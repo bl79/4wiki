@@ -6,8 +6,8 @@ import re
 # import mwparserfromhell
 from pywikibot import xmlreader
 from vladi_commons.file_helpers import file_readtext, filepaths_of_directory
-from my_wikiclass.parse_to_wiki import Parse_to_wiki
-from my_wikiclass.deyatificator import deyatificator
+from my_wikisource_class.parse_to_wiki import Parse_to_wiki
+from my_wikisource_class.deyatificator import deyatificator
 import roman
 
 

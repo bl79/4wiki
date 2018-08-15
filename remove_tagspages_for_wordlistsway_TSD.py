@@ -2,7 +2,7 @@
 import re
 import vladi_commons
 import pywikibot
-from my_wikiclass.wikiclass import WikiMethods
+from my_wikisource_class.wikiclass import WikiMethods
 
 
 class wiki(WikiMethods):

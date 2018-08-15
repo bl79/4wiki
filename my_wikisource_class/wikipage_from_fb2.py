@@ -7,9 +7,9 @@ import operator
 # import mwparserfromhell
 # from pywikibot import xmlreader
 from vladi_commons.file_helpers import file_readtext, filepaths_of_directory, file_savetext
-from my_wikiclass.parse_to_wiki import Parse_to_wiki
-from my_wikiclass.format_text_to_wiki_indexpage import FormatText_to_WikiIndexPage
-import my_wikiclass.wikiworks_data as metaw
+from my_wikisource_class.parse_to_wiki import Parse_to_wiki
+from my_wikisource_class.format_text_to_wiki_indexpage import FormatText_to_WikiIndexPage
+import my_wikisource_class.wikiworks_data as metaw
 
 
 class Pagedata:

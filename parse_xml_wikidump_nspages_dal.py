@@ -6,7 +6,7 @@ from io import StringIO
 from vladi_commons.vladi_helpers import listdic_pop
 from vladi_commons.file_helpers import file_savelines, read_list_interlines
 # import html5lib
-from my_wikiclass.wikiclass import WikiMethods
+from my_wikisource_class.wikiclass import WikiMethods
 from toDO.toDO import ToDO
 
 # Путь к файлу wikidump
